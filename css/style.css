@@ -29,21 +29,21 @@ body{
 
 ::-webkit-scrollbar-thumb {
   cursor: pointer;
-  background: #c5a47e;
+  background: #DE2D23;
 }
 
 ::selection{
-  background-color:#c5a47e;
+  background-color:#DE2D23;
   color:#fff;
 }
 
 -webkit-::selection{
-    background-color:#c5a47e;
+    background-color:#DE2D23;
     color:#fff;
 }
 
 ::-moz-selection{
-    background-color:#c5a47e;
+    background-color:#DE2D23;
     color:#fff;
 }
 
@@ -146,7 +146,7 @@ ul{
 }
 
 a {
-  color:#c5a47e;
+  color:#DE2D23;
   -webkit-transition: color .3s ease-out;
        -o-transition: color .3s ease-out;
           transition: color .3s ease-out;
@@ -154,7 +154,7 @@ a {
 
 a:hover,
 a:focus {
-  color:#c5a47e;
+  color:#DE2D23;
   outline: none;
 }
 
@@ -192,7 +192,7 @@ textarea.form-control{
 }
 
 .form-control:focus{
-  border-color:#c5a47e;
+  border-color:#DE2D23;
   background-color: #fff;
   outline: 0;
   -webkit-box-shadow:none;
@@ -213,7 +213,7 @@ textarea.form-control{
 }
 
 .form-control.error{
-  border-color:#c5a47e;
+  border-color:#DE2D23;
 }
 
 .form-group{
@@ -239,7 +239,7 @@ label.error{
   font-family: 'montserratsemibold';
   position: relative;
   display: inline-block;
-  border:0.2em solid #c5a47e;
+  border:0.2em solid #DE2D23;
   border-radius: 30px;
   padding:1.1em 2.2em 1.05em;
   font-size: 0.875em;
@@ -247,7 +247,7 @@ label.error{
   letter-spacing: 0.15em;
   text-transform: uppercase;
   text-decoration: none;
-  background-color: #c5a47e;
+  background-color: #DE2D23;
   border:0;
   -webkit-transition: all .3s ease-out!important;
           transition: all .3s ease-out!important;
@@ -356,7 +356,7 @@ label.error{
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #c5a47e;
+  background-color: #b44040;
   -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
           animation: sk-foldCubeAngle 2.4s infinite linear both;
   -webkit-transform-origin: 100% 100%;
@@ -438,7 +438,7 @@ label.error{
 }
 
 .text-primary{
-  color:#c5a47e;
+  color:#DE2D23;
 }
 
 .page-lines{
@@ -569,7 +569,7 @@ label.error{
   position: absolute;
   z-index: -1;
   bottom: -0.4em;
-  right:-0.37em;
+  right:-4em;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 8.75em;
@@ -621,6 +621,18 @@ label.error{
   .header-phone{
     display: none;
   }
+  .brand-name{
+  position: absolute;
+  z-index: -1;
+  bottom: -0.4em;
+  right:-2.3em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 4em;
+  line-height: 1;
+  opacity: 0.05;
+  
+}
  }
 
   @media (min-width: 992px) and (max-width: 1200px){
@@ -698,6 +710,9 @@ label.error{
 .social-list li{
   margin-top: 3.8vmin;
 }
+.social-list li a{
+  color: #000;
+}
 
 .social-list .fa{
   font-size: 2.4vmin;
@@ -705,7 +720,7 @@ label.error{
 }
 
 .social-list .fa:hover{
-  color:#c5a47e;
+  color:#DE2D23;
   text-decoration: none;
 }
 
@@ -757,11 +772,11 @@ label.error{
 
 .navbar-desctop-menu li a:hover,
 .navbar-desctop-menu .active > a{
-  color:  #945103;
+  color:  #DE2D23;
 }
 #navbar-desctop-menu li a:hover,
 #navbar-desctop-menu .active > a{
-  color:  #bd966a;
+  color:  #DE2D23;
 }
 
 .navbar-desctop-menu  > li{
@@ -775,7 +790,7 @@ label.error{
   margin-bottom: 1.5em;
 }
 #navbar-desctop-menu > li > a{
-  color: #fff;
+  color: white;
   background-color: transparent;
   margin-bottom: 1.5em;
 }
@@ -852,7 +867,7 @@ label.error{
 
 .navbar-desctop.affix .navbar-desctop-menu li > a:hover,
 .navbar-desctop.affix .navbar-desctop-menu .active > a{
-  color:#c5a47e;
+  color:#DE2D23;
 }
 
 
@@ -931,7 +946,7 @@ label.error{
 }
 
 .navbar-nav-mobile > .current > a{
-  color: #c5a47e;
+  color: #DE2D23;
 }
 
 .navbar-nav-mobile li a .fa-angle-down{
@@ -951,7 +966,7 @@ label.error{
 
 .navbar-nav-mobile > .active > a,
 .navbar-nav-mobile > .active > a:hover{
-  background-color: #c5a47e;
+  background-color: #DE2D23;
   color: #fff;
   -webkit-transition: none;
   -o-transition: none;
@@ -964,7 +979,7 @@ label.error{
 
 .navbar-nav-mobile li a:hover,
 .navbar-nav-mobile li .active > a{
-  color: #c5a47e;
+  color: #DE2D23;
 }
 
 
@@ -986,7 +1001,7 @@ label.error{
 }
 
 .navbar-mobile.affix .navbar-toggle .icon-bar{
-  background-color:#c5a47e;
+  background-color:#DE2D23;
 }
 
 
@@ -1053,7 +1068,7 @@ label.error{
 }
 
 .main-header h1{
-  color: #fff;
+  color: #434343;
   margin:0;
   margin-right: -0.32em;
 }
@@ -1107,10 +1122,12 @@ label.error{
 
 .arrow-left{
   left: 22vmin;
+   text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
 }
 
 .arrow-right{
   right: 15px;
+   text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
 }
 
 .arrow-left:after,
@@ -1125,6 +1142,7 @@ label.error{
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: #fff;
+   text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
 }
 
 .arrow-left:after{
@@ -1176,7 +1194,23 @@ label.error{
   font-size: 18px;
   line-height: 1.7;
 }
+.rev-slidebg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+  z-index: 1;
+}
 
+.slide-title,
+.slide-subtitle {
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 10 !important;
+}
 
 
 /* ------------------------------------------------------------------------------- */
@@ -1322,7 +1356,7 @@ label.error{
   font-weight: normal;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color:#c5a47e;
+  color:#DE2D23;
   padding: 0 0 1em;
   border-bottom:1px solid rgba(249,249,249,0.2);
   margin: 0 0 .5em;
@@ -1708,7 +1742,7 @@ img.mfp-img{
 }
 
 .project-details-info{
-  background-color: #c5a47e;
+  background-color: #DE2D23;
   padding: 4.8em 3.1em 4.8em;
   color:#fff;
 }
@@ -1897,7 +1931,7 @@ img.mfp-img{
 }
 
 .blog-tags a:hover{
-  background-color:#c5a47e;
+  background-color:#DE2D23;
   text-decoration: none;
   color: #fff;
 }
@@ -1931,7 +1965,7 @@ img.mfp-img{
 
 .blog-meta .author a:hover{
   text-decoration: none;
-  color:#c5a47e;
+  color:#DE2D23;
 }
 
 .blog-meta .time{
@@ -2170,7 +2204,7 @@ img.mfp-img{
   margin: 0.35em 0.6em 0 0;
   width: 1.1em;
   text-align: center;
-  color: #c5a47e;
+  color: #DE2D23;
   font-size: 1.2em;
 }
 
@@ -2189,7 +2223,7 @@ img.mfp-img{
 
 .contact-info-content{
   padding: 5.5em 5.6em;
-  background-color:rgba(197,164,125, 0.95);
+  background-color:rgba(117, 114, 112, 0.95);
 }
 
 .contact-info-title{
