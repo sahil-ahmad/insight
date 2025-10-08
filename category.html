@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insight - Category Projects</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" />
+<style>
+  .category-header {
+    padding: 60px 0 40px;
+    text-align: center;
+    background: #f9f9f9;
+    margin-bottom: 60px;
+  }
+  .category-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  .category-type {
+    font-size: 18px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 400;
+  }
+  .back-link {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 30px auto 0;
+    color: #333;
+    text-decoration: none;
+    border: 2px solid #333;
+    transition: all 0.3s;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+  .back-link:hover {
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+  }
+  .projects-section {
+    padding: 0 0 80px;
+  }
+  .project {
+    margin-bottom: 30px;
+    transition: transform 0.3s;
+  }
+  .project:hover {
+    transform: translateY(-5px);
+  }
+  .project figure {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+  }
+  .project img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .project:hover img {
+    transform: scale(1.1);
+  }
+  .project figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 30px 20px;
+    color: #fff;
+  }
+  .project-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #fff;
+  }
+  .project-category {
+    font-size: 14px;
+    color: #ddd;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .no-projects {
+    text-align: center;
+    padding: 100px 20px;
+    color: #999;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+  
+  <!-- Loader -->
+  <div class="loader">
+    <div class="page-lines">
+      <div class="container">
+        <div class="col-line col-xs-4"><div class="line"></div></div>
+        <div class="col-line col-xs-4"><div class="line"></div></div>
+        <div class="col-line col-xs-4"><div class="line"></div><div class="line"></div></div>
+      </div>
+    </div>
+    <div class="loader-brand"> 
+      <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="top" class="header-inner">
+    <div class="brand-panel">
+      <a href="index.html" class="brand js-target-scroll">
+        <img src="img/Insight.png" style="width:150px; filter: drop-shadow(1px 1px 1px rgba(253, 253, 253, 0.5));" />
+      </a>
+      <div class="brand-name">Insight</div>
+    </div>
+   
+    <div class="vertical-panel-content">
+      <div class="vertical-panel-info">
+        <div class="line"></div>
+      </div>
+      <ul class="social-list">
+        <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+      </ul>  
+    </div>
+
+    <!-- Navigation Desktop -->
+    <nav class="navbar-desctop visible-md visible-lg">
+      <div class="container">
+        <a href="#top" class="brand js-target-scroll"></a>
+        <ul class="navbar-desctop-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li class="active"><a href="project.html">Project</a></li>
+          <li><a href="publication.html">Publication</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Navigation Mobile -->
+    <nav class="navbar-mobile">
+      <a href="#top" class="brand js-target-scroll">
+        <img src="img/Insight.png" style="width: 95px" />
+      </a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-mobile">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-mobile"> 
+        <ul class="navbar-nav-mobile">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li class="active"><a href="project.html">Project</a></li>
+          <li><a href="publication.html">Publication</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+      </div>
+    </nav> 
+  </header>
+
+  <!-- Layout -->
+  <div class="layout">
+    
+    <!-- Main -->
+    <main class="main main-inner" style="background-image: url('img/image.webp')" data-stellar-background-ratio="0.6">
+      <div class="container">
+        <header class="main-header">
+          <h1 id="categoryTitle">Projects</h1>
+        </header>
+      </div>
+      <div class="page-lines">
+        <div class="container">
+          <div class="col-line col-xs-4"><div class="line"></div></div>
+          <div class="col-line col-xs-4"><div class="line"></div></div>
+          <div class="col-line col-xs-4"><div class="line"></div><div class="line"></div></div>
+        </div>
+      </div>
+    </main>
+
+    <div class="content">   
+    
+      <!-- Category Info -->
+      <section class="category-header">
+        <div class="container">
+          <h2 class="category-title" id="categoryName">Loading...</h2>
+          <p class="category-type" id="categoryType"></p>
+          <a href="project.html" class="back-link">← Back to All Projects</a>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="projects-section">
+        <div class="container">
+          <div class="row" id="projectsList">
+            <!-- Projects will be loaded dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer id="footer" class="footer">     
+        <div class="container">
+          <div class="row-base row">
+            <div class="col-base text-left-md col-md-4">
+              <a href="index.html" class="brand">
+                <img src="img/Insight.png" style="width: 150px;"/>
+              </a>
+            </div>
+            <div class="text-right-md col-base col-md-4">
+              © Insight 2025. All Rights Reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Lines -->
+      <div class="page-lines">
+        <div class="container">
+          <div class="col-line col-xs-4"><div class="line"></div></div>
+          <div class="col-line col-xs-4"><div class="line"></div></div>
+          <div class="col-line col-xs-4"><div class="line"></div><div class="line"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/interface.js"></script>
+
+<script>
+$(document).ready(function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryKey = urlParams.get('category');
+  
+  if (!categoryKey) {
+    window.location.href = 'project.html';
+    return;
+  }
+
+  fetch('projects-data.json')
+    .then(response => response.json())
+    .then(data => {
+      const category = data.categories[categoryKey];
+      
+      if (!category) {
+        window.location.href = 'project.html';
+        return;
+      }
+
+      // Update page titles
+      $('#categoryTitle').text(category.name);
+      $('#categoryName').text(category.name);
+      $('#categoryType').text(category.type);
+      document.title = `Insight - ${category.name}`;
+
+      // Check if projects exist
+      if (!category.projects || category.projects.length === 0) {
+        $('#projectsList').html('<div class="no-projects">No projects available in this category yet.</div>');
+        return;
+      }
+
+      // Generate projects HTML
+      let projectsHtml = '';
+      category.projects.forEach((project, index) => {
+        const isLight = index % 2 === 0 ? 'project-light' : '';
+        projectsHtml += `
+          <div class="project ${isLight} col-sm-6 col-md-4">
+            <a href="project-detail.html?category=${categoryKey}&project=${project.id}">
+              <figure>
+                <img alt="${project.title}" src="${project.thumbnail}">
+                <figcaption>
+                  <h3 class="project-title">${project.title}</h3>
+                  <h4 class="project-category">${project.location}</h4>
+                </figcaption>
+              </figure>
+            </a>
+          </div>
+        `;
+      });
+
+      $('#projectsList').html(projectsHtml);
+
+      // Add fade-in animation
+      setTimeout(() => {
+        $('.project').addClass('animated fadeIn');
+      }, 100);
+    })
+    .catch(error => {
+      console.error('Error loading data:', error);
+      $('#projectsList').html('<div class="no-projects">Error loading projects. Please try again later.</div>');
+    });
+});
+</script>
+</body>
+</html>

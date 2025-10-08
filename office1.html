@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insight - About Us</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+
+<!-- Styles -->
+<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  .project-title-section {
+    text-align: center;
+    padding: 80px 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .project-subtitle {
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #b8a07e;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .project-main-title {
+    font-size: 72px;
+    font-weight: 300;
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .project-secondary-title {
+    font-size: 48px;
+    font-weight: 300;
+    color: #999;
+    margin-bottom: 40px;
+  }
+
+  .project-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 40px 0;
+  }
+
+  .stat-divider {
+    width: 60px;
+    height: 1px;
+    background: #ddd;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .stat-value {
+    font-size: 16px;
+    color: #333;
+  }
+
+  .project-description {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: justify;
+    line-height: 1.8;
+    color: #666;
+    font-size: 15px;
+  }
+
+  .gallery-title-section {
+    text-align: center;
+    padding: 60px 20px 40px;
+  }
+
+  .gallery-title {
+    font-size: 36px;
+    font-weight: 300;
+    color: #333;
+    letter-spacing: 2px;
+  }
+
+  .project-gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    aspect-ratio: 4/3;
+    position: relative;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    .project-main-title {
+      font-size: 42px;
+    }
+
+    .project-secondary-title {
+      font-size: 32px;
+    }
+
+    .project-stats {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .stat-divider {
+      width: 40px;
+      transform: rotate(90deg);
+    }
+
+    .project-gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+
+<body>
+  
+  <!-- Loader -->
+  <div class="loader">
+    <div class="page-lines">
+      <div class="container">
+        <div class="col-line col-xs-4">
+          <div class="line"></div>
+        </div>
+        <div class="col-line col-xs-4">
+          <div class="line"></div>
+        </div>
+        <div class="col-line col-xs-4">
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+    <div class="loader-brand"> 
+      <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+      </div>
+    </div>
+  </div>
+
+  <header id="top" class="header-inner">
+    <div class="brand-panel">
+      <a href="index.html" class="brand js-target-scroll">
+        <img src="img/Insight.png" style="width:150px; filter: drop-shadow(1px 1px 1px rgba(253, 253, 253, 0.5));" />
+      </a>
+      <div class="brand-name">Insight</div>
+    </div>
+    <div class="vertical-panel-content">
+      <div class="vertical-panel-info">
+        <div class="line"></div>
+      </div>
+      <ul class="social-list">
+        <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+      </ul>  
+    </div>
+
+    <!-- Navigation Desktop -->
+    <nav class="navbar-desctop visible-md visible-lg">
+      <div class="container">
+        <ul class="navbar-desctop-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="about.html">About us</a></li>
+          <li><a href="project.html">Project</a></li>
+          <li><a href="publication.html">Publication</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Navigation Mobile -->
+    <nav class="navbar-mobile">
+      <a href="#top" class="brand js-target-scroll">
+        <img src="img/Insight.png" style="width: 95px" />
+      </a>
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-mobile">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-mobile"> 
+        <ul class="navbar-nav-mobile">
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="about.html">About us</a></li>
+          <li><a href="architecture.html">Architecture</a></li>
+          <li><a href="architecture.html">Interior</a></li>
+          <li><a href="blog.html">Publication</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+      </div>
+    </nav> 
+  </header>
+
+  <!-- Layout -->
+  <div class="layout">
+    
+    <!-- Main Hero Section -->
+    <main class="main main-inner main-project" style="background-image: url('img/image.webp')" data-stellar-background-ratio="0.6">
+      <div class="container">
+        <header class="main-header"><h1>Porftolio</h1></header>
+      </div>
+      <div class="page-lines">
+        <div class="container">
+          <div class="col-line col-xs-4"><div class="line"></div></div>
+          <div class="col-line col-xs-4"><div class="line"></div></div>
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="content">   
+    
+      <!-- Project Title Section -->
+      <section class="project-title-section">
+        <div class="project-subtitle">office</div>
+        <!-- <h1 class="project-main-title">Casa</h1>
+        <h2 class="project-secondary-title">Arco</h2> -->
+        
+        <!-- <div class="project-stats">
+          <div class="stat-item">
+            <div class="stat-label">PUBLIC AREA</div>
+            <div class="stat-value">0</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-label">BEDROOMS</div>
+            <div class="stat-value">3</div>
+          </div>
+        </div> -->
+      </section>
+
+      <!-- Project Description -->
+      <section class="project-description">
+        <p>This home features a clean and simple linear design that balances modern style with muted elegance. The exterior elevates abd with neutral palette framed by lush greenery, offering a refined visual and privacy from neighbouring buildings - Inside, the space opens is bathed in soft morning sunlight, creating a beautiful and spiritual atmosphere. The house has three unique master bedrooms, each with en-suites, separate dressing areas, and bay seating. The design emphasises functionality, with spacious, open interiors that delight open, and spacious. Large windows and openings connect the indoor spaces seamlessly with the outdoors, bringing in natural light and greenery. The home also includes a planted terrace that doubles as an ornamental terrace to create a blend of indoor and outdoor spaces. Subtle natural elements. The home truly manifests modern living with its thoughtful design and harmonious integration of nature.</p>
+      </section>
+
+      <!-- Gallery Title -->
+      <section class="gallery-title-section">
+        <h2 class="gallery-title">Project gallery</h2>
+      </section>
+
+      <!-- Project Gallery -->
+      <section class="project-gallery">
+        <div class="gallery-item">
+          <img src="img\office\JAI CHOPRA OFFICE\raj ji office 11.jpg" alt="Interior Design 1">
+        </div>
+    
+      
+
+
+
+      </section>
+
+      <!-- Footer -->
+      <footer id="footer" class="footer" style="margin-top: 80px;">     
+        <div class="container">
+          <div class="row-base row">
+            <div class="col-base text-left-md col-md-4">
+              <a href="#" class="brand">
+                <img src="img/Insight.png" style="width: 150px;"/>
+              </a>
+            </div>
+            <div class="text-right-md col-base col-md-4">
+              © swayambhus 2025. All Rights Reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Lines -->
+      <div class="page-lines">
+        <div class="container">
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+          </div>
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+          </div>
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- SCRIPTS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/jquery.magnific-popup.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/interface.js"></script> 
+</body>
+
+</html>

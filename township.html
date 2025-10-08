@@ -1,0 +1,464 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insight - Publication</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+
+<!-- Styles -->
+<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  /* Project Grid Styles */
+  .projects-section {
+    padding: 80px 0;
+    background: #f8f8f8;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+  }
+
+  .project-box {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .project-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  }
+
+  .project-image {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .project-box:hover .project-image img {
+    transform: scale(1.1);
+  }
+
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project-box:hover .project-overlay {
+    opacity: 1;
+  }
+
+  .project-overlay-content {
+    text-align: center;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+  }
+
+  .project-box:hover .project-overlay-content {
+    transform: translateY(0);
+  }
+
+  .icon-btn {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px;
+    background: #fff;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .icon-btn:hover {
+    background: #333;
+    color: #fff;
+  }
+
+  /* Modal Styles */
+  .image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+  }
+
+  .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border: none;
+    display: block;
+    margin: auto;
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .project-image {
+      height: 280px;
+    }
+
+    .projects-section {
+      padding: 50px 0;
+    }
+
+    .close {
+      font-size: 30px;
+      right: 20px;
+      top: 15px;
+    }
+
+    .modal-content {
+      max-width: 95%;
+      max-height: 85%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .project-image {
+      height: 250px;
+    }
+
+    .icon-btn {
+      font-size: 16px;
+      padding: 8px;
+    }
+  }
+</style>
+</head>
+
+<body>
+  
+  <!-- Loader -->
+  <div class="loader">
+    <div class="page-lines">
+      <div class="container">
+        <div class="col-line col-xs-4">
+          <div class="line"></div>
+        </div>
+        <div class="col-line col-xs-4">
+          <div class="line"></div>
+        </div>
+        <div class="col-line col-xs-4">
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+    <div class="loader-brand"> 
+      <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="top" class="header-inner">
+    <div class="brand-panel">
+      <a href="index.html" class="brand js-target-scroll">
+        <img src="img/Insight.png" style="width:150px; filter: drop-shadow(1px 1px 1px rgba(253, 253, 253, 0.5));" />
+      </a>
+      <div class="brand-name">Insight</div>
+    </div>
+  
+    <div class="vertical-panel-content">
+      <div class="vertical-panel-info">
+        <div class="line"></div>
+      </div>
+      <ul class="social-list">
+        <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+      </ul> 
+    </div>
+
+    <!-- Navigation Desktop -->
+    <nav class="navbar-desctop visible-md visible-lg">
+      <div class="container">
+        <a href="#top" class="brand js-target-scroll">
+          <img src="img/Insight.png" style="width: 150px" />
+        </a>
+        <ul class="navbar-desctop-menu">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="about.html">About us</a>
+          </li>
+          <li>
+            <a href="project.html">Project</a>
+          </li>
+          <li class="active">
+            <a href="publication.html">Publication</a>
+          </li>
+          <li>
+            <a href="contacts.html">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Navigation Mobile -->
+    <nav class="navbar-mobile">
+      <a href="#top" class="brand js-target-scroll">
+        <img src="img/Insight.png" style="width: 95px" />
+      </a>
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-mobile">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-mobile"> 
+        <ul class="navbar-nav-mobile">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="about.html">About us</a>
+          </li>
+          <li>
+            <a href="project.html">Project</a>
+          </li>
+          <li class="active">
+            <a href="publication.html">Publication</a>
+          </li>
+          <li>
+            <a href="contacts.html">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </nav> 
+  </header>
+
+  <!-- Layout -->
+  <div class="layout">
+    
+    <!-- Main Header -->
+    <main class="main main-inner main-project" style="background-image: url('img/image.webp')" data-stellar-background-ratio="0.6">
+      <div class="container">
+        <header class="main-header"><h1>Township</h1></header>
+      </div>
+      <div class="page-lines">
+        <div class="container">
+          <div class="col-line col-xs-4"><div class="line"></div></div>
+          <div class="col-line col-xs-4"><div class="line"></div></div>
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="content">   
+      
+      <!-- Projects Section -->
+      <section class="projects-section">
+        <div class="container">
+          <div class="projects-grid">
+            
+            <!-- Project Box 1 -->
+            <div class="project-box">
+              <div class="project-image">
+                <img src="img\Township\NAVKAR TOWNSHIP\2\V_1_Cam_2_view_FF.jpg" alt="Modern Villa">
+                <div class="project-overlay">
+                  <div class="project-overlay-content">
+                    <a href="#" class="icon-btn magnify-btn" data-image="img\Township\NAVKAR TOWNSHIP\2\V_1_Cam_2_view_FF.jpg"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="township1.html" class="icon-btn arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Box 2 -->
+            <div class="project-box">
+              <div class="project-image">
+                <img src="img\Township\NAVKAR TOWNSHIP\16-09-20\cam_10_view_FF.jpg" alt="Urban Complex">
+                <div class="project-overlay">
+                  <div class="project-overlay-content">
+                    <a href="#" class="icon-btn magnify-btn" data-image="img\Township\NAVKAR TOWNSHIP\16-09-20\cam_10_view_FF.jpg"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="township2.html" class="icon-btn arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Box 3 -->
+            <div class="project-box">
+              <div class="project-image">
+                <img src="img\Township\NAVKAR TOWNSHIP\1\1.jpeg" alt="Interior Design">
+                <div class="project-overlay">
+                  <div class="project-overlay-content">
+                    <a href="#" class="icon-btn magnify-btn" data-image="img\Township\NAVKAR TOWNSHIP\1\1.jpeg"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="township3.html" class="icon-btn arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          
+
+         
+
+         
+           
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Image Modal -->
+      <div id="imageModal" class="image-modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Project Image">
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer" class="footer">     
+        <div class="container">
+          <div class="row-base row">
+            <div class="col-base text-left-md col-md-4">
+              <a href="#" class="brand">
+                <img src="img/Insight.png" style="width: 150px;"/>
+              </a>
+            </div>
+            <div class="text-right-md col-base col-md-4">
+              © Insight 2016. All Rights Reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Lines -->
+      <div class="page-lines">
+        <div class="container">
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+          </div>
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+          </div>
+          <div class="col-line col-xs-4">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/smoothscroll.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.magnific-popup.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/interface.js"></script> 
+  <script>
+    // Get the modal
+    var modal = document.getElementById("imageModal");
+
+    // Get the image and insert it inside the modal
+    var modalImg = document.getElementById("modalImage");
+    var magnifyButtons = document.getElementsByClassName("magnify-btn");
+
+    // Add click event to each magnify button
+    for (var i = 0; i < magnifyButtons.length; i++) {
+      magnifyButtons[i].onclick = function(e) {
+        e.preventDefault();
+        modal.style.display = "flex";
+        modalImg.src = this.getAttribute("data-image");
+        modalImg.alt = "Project Image";
+      }
+    }
+
+    // Get the <span> element that closes the modal
+    var closeBtn = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+      modalImg.src = "";
+    }
+
+    // Close modal when clicking outside the image
+    modal.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+        modalImg.src = "";
+      }
+    }
+  </script>
+</body>
+
+</html>

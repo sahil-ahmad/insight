@@ -1,11 +1,9 @@
 <!DOCTYPE HTML>
 <html lang="en">
-
-
 <head>
-<meta  charset="utf-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insight  - Architecture </title> 
+<title>Insight - Architecture</title> 
 
 <!-- Favicons -->
 <!-- <link rel="shortcut icon" href="favicon.png"> -->
@@ -18,822 +16,534 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet" media="screen">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- <style>
-      
+<style>
+.services-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .services-section {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.section-header {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
 
-        .section-header {
-          margin-top: 50px;
-            margin-bottom: 50px;
-            text-align: center;
-        }
+.section-header h2 {
+    font-size: 48px;
+    font-weight: 300;
+    color: #333;
+    letter-spacing: 8px;
+}
 
-        .section-header h2 {
-            font-size: 48px;
-            font-weight: 300;
-            color: #333;
-            letter-spacing: 8px;
-        }
+.section-header h2 span {
+    color: #b8a07e;
+}
 
-        .section-header h2 span {
-            color: #b8a07e;
-        }
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
+.service-card {
+    height: 400px;
+    perspective: 1000px;
+}
 
-        .service-card {
-            height: 400px;
-            perspective: 1000px;
-        }
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
 
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
+.service-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
 
-        .service-card:hover .card-inner {
-            transform: rotateY(180deg);
-        }
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
 
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+.card-front {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); */
+}
 
-        .card-front {
-            background: #fff;
-        }
+.card-front h3 {
+    font-size: 24px;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+}
 
-        .card-front img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.card-back {
+    background: #fff;
+    transform: rotateY(180deg);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-        .card-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 30px 20px;
-            color: white;
-        }
+.card-back-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    opacity: 0.3;
+}
 
-        .service-label {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 14px;
-            letter-spacing: 3px;
-            color: rgba(255,255,255,0.8);
-            text-transform: uppercase;
-        }
+.card-back h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
 
-        .card-back {
-            background: #fff;
-            transform: rotateY(180deg);
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+.card-back p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
 
-        .card-back-icon {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 20px;
-            opacity: 0.3;
-        }
-
-        .card-back h3 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .card-back p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            font-size: 14px;
-        }
-
-      
-
-        @media (max-width: 768px) {
-            .section-header h2 {
-                font-size: 32px;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+@media (max-width: 768px) {
+    .section-header h2 {
+        font-size: 32px;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
 <body>
-  
-    <!-- Loader -->
-
-    <div class="loader">
-      <div class="page-lines">
+<div class="loader">
+    <div class="page-lines">
         <div class="container">
-          <div class="col-line col-xs-4">
-            <div class="line"></div>
-          </div>
-          <div class="col-line col-xs-4">
-            <div class="line"></div>
-          </div>
-          <div class="col-line col-xs-4">
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
+            <div class="col-line col-xs-4"><div class="line"></div></div>
+            <div class="col-line col-xs-4"><div class="line"></div></div>
+            <div class="col-line col-xs-4"><div class="line"></div><div class="line"></div></div>
         </div>
-      </div>
-      <div class="loader-brand"> 
-        <div class="sk-folding-cube">
-          <div class="sk-cube1 sk-cube"></div>
-          <div class="sk-cube2 sk-cube"></div>
-          <div class="sk-cube4 sk-cube"></div>
-          <div class="sk-cube3 sk-cube"></div>
-        </div>
-      </div>
     </div>
-
-    <header id="top" class="header-inner">
-      <div class="brand-panel">
-          <a href="index.html" class="brand js-target-scroll">
-    <img src="img/Insight.png" style="width:150px; filter: drop-shadow(1px 1px 1px rgba(253, 253, 253, 0.5));" />
-</a>
-        <div class="brand-name">Insight</div>
-      </div>
-      <!-- <div class="header-phone">+7 (212) 674-25-10</div> -->
-      <div class="vertical-panel-content">
-        <div class="vertical-panel-info">
-            <div class="line"></div>
-         </div>
-        <ul class="social-list">
-          <li><a href="#" ><i class="fa-brands fa-whatsapp"></i></a></li>
-          <li><a href="#" ><i class="fa-brands fa-instagram"></i></a></li>
-          <li><a href="#" ><i class="fa-brands fa-facebook"></i></a></li>
-          <li><a href="#" ><i class="fa-brands fa-twitter"></i></a></li>
-         </ul>  
-      </div>
-
-      <!-- Navigation Desctop -->
-
-     <nav class="navbar-desctop visible-md visible-lg">
-        <div class="container">
-        <!-- <img src="img/Insight.png" style="width: 150px" /> -->
-          <ul class="navbar-desctop-menu">
-            <li class="active">
-              <a href="index.html">Home</a>
-             
-            </li>
-            <li>
-              <a href="about.html">About us</a>
-            </li>
-            <li>
-              <a href="architecture.html">Architecture</a>
-            
-            </li> 
-             <li>
-              <a href="interior.html">Interior</a>
-            
-            </li> 
-          
-             
-            <li>
-              <a href="blog.html">Publication</a>
-           
-            </li>
-            <li>
-              <a href="contacts.html">Contacts</a>
-            </li>
-          </ul>
+    <div class="loader-brand"> 
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
         </div>
-      </nav>
+    </div>
+</div>
 
-      <!-- Navigation Mobile -->
-
-      <nav class="navbar-mobile">
+<header id="top" class="header-inner">
+    <div class="brand-panel">
+        <a href="index.html" class="brand js-target-scroll">
+            <img src="img/Insight.png" style="width:150px; filter: drop-shadow(1px 1px 1px rgba(253, 253, 253, 0.5));" />
+        </a>
+        <div class="brand-name">Insight</div>
+    </div>
+    <div class="vertical-panel-content">
+        <div class="vertical-panel-info"><div class="line"></div></div>
+        <ul class="social-list">
+            <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+        </ul>  
+    </div>
+    <nav class="navbar-desctop visible-md visible-lg">
+        <div class="container">
+            <ul class="navbar-desctop-menu">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="project.html">Project</a></li>
+                <li><a href="publication.html">Publication</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav class="navbar-mobile">
         <a href="#top" class="brand js-target-scroll">
             <img src="img/Insight.png" style="width: 95px" />
         </a>
-
-        <!-- Navbar Collapse -->
-
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-mobile">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbar-mobile"> 
-          <ul class="navbar-nav-mobile">
-            <li>
-              <a href="index.html">Home <i class="fa fa-angle-down"></i></a>
-             
-            </li>
-            <li class="active">
-              <a href="about.html" >About us</a>
-            </li>
-            <li>
-              <a href="architecture.html">Architecture</a>
-            
-            </li> 
-             <li>
-              <a href="architecture.html">Interior</a>
-            
-            </li> 
-             
-            <li>
-              <a href="blog.html">Publication</a>
-           
-            </li>
-            <li>
-              <a href="contacts.html">Contacts</a>
-            </li>
-          </ul>
+            <ul class="navbar-nav-mobile">
+                <li><a href="index.html">Home <i class="fa fa-angle-down"></i></a></li>
+                <li class="active"><a href="about.html">About us</a></li>
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="architecture.html">Interior</a></li>
+                <li><a href="blog.html">Publication</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+            </ul>
         </div>
-      </nav> 
-    </header>
+    </nav> 
+</header>
 
-  <!-- Layout -->
-
-  <div class="layout">
-    
-    <!-- Home -->
-    
-  <main
-        class="main main-inner main-project"
-        style="background-image: url('img/380x370.jpg')"
-        data-stellar-background-ratio="0.6"
-      >
+<div class="layout">
+    <main class="main main-inner main-project" style="background-image: url('img/image.webp')" data-stellar-background-ratio="0.6">
         <div class="container">
-          <header class="main-header"><h1>About Us</h1></header>
+            <header class="main-header"><h1>About Us</h1></header>
         </div>
         <div class="page-lines">
-          <div class="container">
-            <div class="col-line col-xs-4"><div class="line"></div></div>
-            <div class="col-line col-xs-4"><div class="line"></div></div>
-            <div class="col-line col-xs-4">
-              <div class="line"></div>
-              <div class="line"></div>
+            <div class="container">
+                <div class="col-line col-xs-4"><div class="line"></div></div>
+                <div class="col-line col-xs-4"><div class="line"></div></div>
+                <div class="col-line col-xs-4"><div class="line"></div><div class="line"></div></div>
             </div>
-          </div>
         </div>
-      </main>
+    </main>
 
     <div class="content">   
-    
-      <!-- About  -->
+        <section id="about" class="about section">
+            <div class="container">
+                <div class="entry">
+                    <h3 class="entry-title" style="font-size: 30px;">INSIGHT<span class="text-primary">.</span></h3>
+                    <p class="entry-text" style="font-size: 22px; text-align: justify;"><b>Project Philosophy:</b> All projects, regardless of size and prominence, are equally important to our firm. We bring years of architectural experience to each project.<br/>
+                    INSIGHT realizes each project is unique and will require creative solutions. We believe in the need to understand our clients' experiences. The combination of our resources and experiences are critical factors to the success of each project.<br/>
+                    <b>Design Philosophy:</b> Design excellence is achieved through blending well-functioning facilities with an appropriate image. Often the best design solutions are simple in nature. There is a difference between complicated and complexity. Energy conscientiousness, maintenance, initial cost, aesthetics, and function are complex issues that can result in clean and simple design solutions.
+                    Because great design starts by understanding your problems, we begin by asking questions - a lot of questions. We work to understand your goals, customer, project parameters and desired outcomes. We research your intended audiences and study the competition. We define the design problems and discover strategies for solving those problems effectively and memorably.</p>
+                </div>
+            </div>
+        </section>
 
-      <section id="about" class="about section">
-        <div class="container">
-          <div class="entry">
-            <h3 class="entry-title" style="font-size: 30px;">INSIGHT<span class="text-primary">.</span></h3>
-            <p class="entry-text" style="font-size: 22px; text-align: justify;"><B>Project Philosophy:</B> All projects, regardless of size and prominence, are equally important to our firm. We bring years of architectural experience to each project.<br/>
-INSIGHT realizes each project is unique and will require creative solutions. We believe in the need to understand our clients' experiences. The combination of our resources and experiences are critical factors to the success of each project.<br/>
-<B>Design Philosophy:</B> Design excellence is achieved through blending well-functioning facilities with an appropriate image. Often the best design solutions are simple in nature. There is a difference between complicated and complexity. Energy conscientiousness, maintenance, initial cost, aesthetics, and function are complex issues that can result in clean and simple design solutions.
-Because great design starts by understanding your problems, we begin by asking questions - a lot of questions. We work to understand your goals, customer, project parameters and desired outcomes. We research your intended audiences and study the competition. We define the design problems and discover strategies for solving those problems effectively and memorably.</p>
-          </div>
+        <section class="about section" style="display: flex; justify-content: space-between; align-items: center; padding: 20px; max-width: 1000px; margin: 0 auto; gap: 90px;">
+            <div class="akshay" style="display: flex; padding-right: 20px;">
+                <div class="insight" style="flex: 1; padding-right: 20px;">
+                    <h2 style="margin: 0 0 10px 0; font-size: 24px; color: #333;" class="entry-title">WHY US?</h2>
+                    <p style="margin: 0; font-size: 16px; color: #666; line-height: 1.5;" class="entry-text">Direct principal involvement. Unbroken support throughout the design and construction process. Unique, holistic design solutions to particular needs. Expertise in Learning Environments and Sustainability.</p>
+                </div>
+                <div class="image" style="flex: 1;">
+                    <img src="img/aboutimage.jpg" alt="Modern buildings" style="max-width: 100%; height: auto; border-radius: 10px;">
+                </div>
+            </div>
+        </section>
+
+        <section class="about section" style="display: flex; justify-content: space-between; align-items: center; padding: 20px; max-width: 1000px; margin: 0 auto; gap: 90px;">
+            <div class="image" style="flex: 1;">
+                <img src="img/aboutimage.jpg" alt="Modern buildings" style="max-width: 100%; height: auto; border-radius: 10px;">
+            </div>
+            <div class="insight" style="flex: 1; padding-right: 20px;">
+                <h2 style="margin: 0 0 10px 0; font-size: 24px; color: #333;" class="entry-title">STRATEGY & CONCEPT</h2>
+                <p style="margin: 0; font-size: 16px; color: #666; line-height: 1.5;" class="entry-text">Direct principal involvement. Unbroken support throughout the design and construction process. Unique, holistic design solutions to particular needs. Expertise in Learning Environments and Sustainability.</p>
+            </div>
+        </section>
+
+        <section style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; padding: 20px; max-width: 1200px; margin: 0 auto; background-color: #fff; margin-top: 50px;">
+            <h2 style="width: 100%; text-align: center; margin-bottom: 50px; font-size: 28px; color: #333;">Team Members</h2>
+            <div style="flex: 1; min-width: 250px; margin: 10px; text-align: center;">
+                <img src="https://img.freepik.com/premium-photo/successful-mature-businessman-working-inside-office-man-business-suit-working-workplace-with_321831-15566.jpg" alt="Akshay Goyal" style="max-width: 50%; height: auto; border-radius: 10px;">
+                <h3 style="margin: 10px 0 5px 0; font-size: 20px; color: #333;">Akshay Goyal</h3>
+                <p style="margin: 0; font-size: 16px; color: #666;">Jr. Interior Designer</p>
+            </div>
+            <div style="flex: 1; min-width: 250px; margin: 10px; text-align: center;">
+                <img src="https://wp3.commonsupport.com/newwp/quincy/wp-content/uploads/2018/05/3.jpg" alt="Sumit" style="max-width: 50%; height: auto; border-radius: 10px;">
+                <h3 style="margin: 10px 0 5px 0; font-size: 20px; color: #333;">Sumit</h3>
+                <p style="margin: 0; font-size: 16px; color: #666;">Designer</p>
+            </div>
+        </section>
+
+        <div class="services-section">
+            <div class="section-header">
+                <h2>OUR <span>SERVICES</span></h2>
+            </div>
+            <div class="services-grid">
+                <!-- Architecture Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>ARCHITECTURE</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="8" y="16" width="48" height="40" />
+                                <line x1="8" y1="24" x2="56" y2="24" />
+                                <line x1="8" y1="32" x2="56" y2="32" />
+                                <line x1="8" y1="40" x2="56" y2="40" />
+                                <line x1="8" y1="48" x2="56" y2="48" />
+                                <polyline points="20,8 32,16 44,8" />
+                            </svg>
+                            <h3>ARCHITECTURE</h3>
+                            <p>Comprehensive architectural design services for diverse building types and scales.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Interior Space Planning Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>INTERIOR SPACE PLANNING</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="12" y="20" width="40" height="32" />
+                                <line x1="20" y1="28" x2="44" y2="28" />
+                                <circle cx="38" cy="36" r="4" />
+                                <line x1="12" y1="52" x2="52" y2="52" />
+                            </svg>
+                            <h3>INTERIOR SPACE PLANNING</h3>
+                            <p>Strategic space optimization and layout design to enhance functionality and aesthetics.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feasibility Studies Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>FEASIBILITY STUDIES</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="32" cy="32" r="20" />
+                                <path d="M20 32 L28 40 L44 24" />
+                            </svg>
+                            <h3>FEASIBILITY STUDIES</h3>
+                            <p>In-depth analysis and evaluation of project viability, technical requirements, and economic factors.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project Development Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>PROJECT DEVELOPMENT</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="12" y="8" width="40" height="48" />
+                                <line x1="20" y1="20" x2="44" y2="20" />
+                                <line x1="20" y1="28" x2="44" y2="28" />
+                                <line x1="20" y1="36" x2="36" y2="36" />
+                            </svg>
+                            <h3>PROJECT DEVELOPMENT</h3>
+                            <p>Complete project management from initial concept through final execution and delivery.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Interiors Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>INTERIORS</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M8 32 L32 8 L56 32 L56 56 L8 56 Z" />
+                                <rect x="24" y="36" width="16" height="20" />
+                                <line x1="40" y1="20" x2="48" y2="20" />
+                                <line x1="40" y1="26" x2="48" y2="26" />
+                            </svg>
+                            <h3>INTERIORS</h3>
+                            <p>Holistic interior design solutions creating beautiful, functional, and inspiring environments.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Master Planning Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>MASTER PLANNING</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="8" y="24" width="16" height="28" />
+                                <rect x="28" y="16" width="16" height="36" />
+                                <rect x="48" y="20" width="8" height="32" />
+                            </svg>
+                            <h3>MASTER PLANNING</h3>
+                            <p>Large-scale strategic planning and development frameworks for comprehensive projects.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Residential Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>RESIDENTIAL</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M8 32 L32 8 L56 32" />
+                                <path d="M12 32 L12 56 L52 56 L52 32" />
+                                <rect x="26" y="40" width="12" height="16" />
+                            </svg>
+                            <h3>RESIDENTIAL</h3>
+                            <p>Custom residential design creating comfortable, elegant homes tailored to your lifestyle.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Commercial Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>COMMERCIAL</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="12" y="12" width="40" height="40" />
+                                <line x1="12" y1="24" x2="52" y2="24" />
+                                <line x1="12" y1="36" x2="52" y2="36" />
+                                <line x1="32" y1="12" x2="32" y2="52" />
+                            </svg>
+                            <h3>COMMERCIAL</h3>
+                            <p>Innovative commercial spaces designed to enhance productivity and brand presence.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hospitality Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>HOSPITALITY</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="8" y="16" width="48" height="36" />
+                                <line x1="8" y1="28" x2="56" y2="28" />
+                                <circle cx="20" cy="38" r="3" />
+                                <circle cx="32" cy="38" r="3" />
+                                <circle cx="44" cy="38" r="3" />
+                            </svg>
+                            <h3>HOSPITALITY</h3>
+                            <p>Memorable hospitality designs creating exceptional guest experiences and atmospheres.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Healthcare Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>HEALTHCARE</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="32" cy="32" r="20" />
+                                <line x1="32" y1="20" x2="32" y2="44" />
+                                <line x1="20" y1="32" x2="44" y2="32" />
+                            </svg>
+                            <h3>HEALTHCARE</h3>
+                            <p>Healing-focused healthcare facilities promoting wellness, comfort, and efficient care delivery.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Public Facilities Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>PUBLIC FACILITIES</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="16" y="20" width="32" height="28" />
+                                <polyline points="12,28 32,12 52,28" />
+                                <line x1="28" y1="36" x2="36" y2="36" />
+                            </svg>
+                            <h3>PUBLIC FACILITIES</h3>
+                            <p>Community-centered public spaces designed for accessibility, functionality, and civic pride.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Retail Educational Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>RETAIL EDUCATIONAL</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="12" y="16" width="40" height="36" />
+                                <path d="M20 28 L28 24 L36 28 L44 24" />
+                                <circle cx="22" cy="38" r="2" />
+                                <circle cx="32" cy="38" r="2" />
+                                <circle cx="42" cy="38" r="2" />
+                            </svg>
+                            <h3>RETAIL EDUCATIONAL</h3>
+                            <p>Dynamic retail and educational spaces fostering engagement, learning, and commerce.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Recreational Projects Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>RECREATIONAL PROJECTS</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="32" cy="28" r="16" />
+                                <path d="M20 44 Q32 52 44 44" />
+                                <circle cx="26" cy="24" r="2" />
+                                <circle cx="38" cy="24" r="2" />
+                            </svg>
+                            <h3>RECREATIONAL PROJECTS</h3>
+                            <p>Vibrant recreational facilities designed for leisure, sports, and community activities.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Spiritual Facilities Card -->
+                <div class="service-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>SPIRITUAL FACILITIES</h3>
+                        </div>
+                        <div class="card-back">
+                            <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M32 8 L32 32" />
+                                <circle cx="32" cy="32" r="16" />
+                                <path d="M24 24 L40 40" />
+                                <path d="M40 24 L24 40" />
+                            </svg>
+                            <h3>SPIRITUAL FACILITIES</h3>
+                            <p>Sacred spaces designed for contemplation, worship, and spiritual connection.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
 
-      <section class=" about section" style="display: flex;  justify-content: space-between; align-items: center; padding: 20px; max-width: 1000px; margin: 0 auto; gap: 90px;">
-          <!-- <h2 style="width: 100%; text-align: center; margin-bottom: 10px; font-size: 28px; color: #333;">Team Members</h2> -->
-  <div class="akshay" style="display: flex; padding-right: 20px;">
-  <div class="insight" style="flex: 1; padding-right: 20px;">
-    <h2 style="margin: 0 0 10px 0; font-size: 24px; color: #333;" class="entry-title"> WHY US? </h2>
-    <!-- <h3 style="margin: 0 0 15px 0; font-size: 20px; color: #555;" class="entry-title">Principal Architect</h3> -->
-    <p style="margin: 0; font-size: 16px; color: #666; line-height: 1.5;" class="entry-text">Direct principal involvement. Unbroken support throughout the design and construction process. Unique, holistic design solutions to particular needs. Expertise in Learning Environments and Sustainability.</p>
-  </div>
-  <div class="image" style="flex: 1;">
-    <img src="img\aboutimage.jpg" alt="Modern buildings" style="max-width: 100%; height: auto; border-radius: 10px;">
-  </div>
-  </div>
-</section>
-
-
-      
-<section class=" about section" style="display: flex; justify-content: space-between; align-items: center; padding: 20px; max-width: 1000px; margin: 0 auto; gap: 90px;">
-   <div class="image" style="flex: 1;">
-    <img src="img\aboutimage.jpg" alt="Modern buildings" style="max-width: 100%; height: auto; border-radius: 10px;">
-  </div>
-  <div class="insight" style="flex: 1; padding-right: 20px;">
-    <h2 style="margin: 0 0 10px 0; font-size: 24px; color: #333;" class="entry-title">STRATEGY & CONCEPT</h2>
-    <!-- <h3 style="margin: 0 0 15px 0; font-size: 20px; color: #555;" class="entry-title">Principal Architect</h3> -->
-    <p style="margin: 0; font-size: 16px; color: #666; line-height: 1.5;" class="entry-text">Direct principal involvement. Unbroken support throughout the design and construction process. Unique, holistic design solutions to particular needs. Expertise in Learning Environments and Sustainability.</p>
-  </div>
- 
-</section>
-
-
-<section style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; padding: 20px; max-width: 1200px; margin: 0 auto; background-color: #fff; margin-top: 50px;">
-  <h2 style="width: 100%; text-align: center; margin-bottom: 50px; font-size: 28px; color: #333;">Team Members</h2>
-  <div style="flex: 1; min-width: 250px; margin: 10px; text-align: center;">
-    <img src="https://img.freepik.com/premium-photo/successful-mature-businessman-working-inside-office-man-business-suit-working-workplace-with_321831-15566.jpg" alt="Akshay Goyal" style="max-width: 50%; height: auto; border-radius: 10px;">
-    <h3 style="margin: 10px 0 5px 0; font-size: 20px; color: #333;">Akshay Goyal</h3>
-    <p style="margin: 0; font-size: 16px; color: #666;">Jr. Interior Designer</p>
-  </div>
-  <div style="flex: 1; min-width: 250px; margin: 10px; text-align: center;">
-    <img src="https://wp3.commonsupport.com/newwp/quincy/wp-content/uploads/2018/05/3.jpg" alt="Sumit" style="max-width: 50%; height: auto; border-radius: 10px;">
-    <h3 style="margin: 10px 0 5px 0; font-size: 20px; color: #333;">Sumit</h3>
-    <p style="margin: 0; font-size: 16px; color: #666;">Designer</p>
-  </div>
-</section>
-     
-<!-- Services -->
-
-     <!-- <section id="services" class="services section">
-        <div class="container">
-          <header class="section-header">
-            <h2 class="section-title"><span class="text-primary">Our</span> Services</h2>
-          </header>
-          <div class="section-content">
-            <div class="row-services row-base row">
-              <div class="col-base col-service col-sm-6 col-md-4 wow fadeInUp">
-                <div class="service-item">
-                  <img alt="" src="img/img-icon/icon-architecture.png">
-                  <h4>Architecture</h4>
-                  <p>For each project we establish relationships with partners who we know will help us create added value for your project. As well as bringing together the public and private sectors, we make sector-overarching links to gather knowledge and 
-                  to learn from each other. The way 
-                  we undertake projects is based 
-                  on permanently applying.</p>
-                </div>
-              </div>
-              <div class="col-base col-service col-sm-6 col-md-4 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item">
-                  <img alt="" src="img/img-icon/icon-interiors.png">
-                  <h4>interiors</h4>
-                  <p>For each project we establish relationships with partners who we know will help us create added value for your project. As well as bringing together the public and private sectors, we make sector-overarching links to gather knowledge and 
-                  to learn from each other. The way 
-                  we undertake projects is based 
-                  on permanently applying.</p>
-                </div>
-              </div>
-              <div class="clearfix visible-sm"></div>
-              <div class="col-base col-service col-sm-6 col-md-4 wow fadeInUp" data-wow-delay="0.6s">
-                <div class="service-item">
-                  <img alt="" src="img/img-icon/icon-planing.png">
-                  <h4>Planing</h4>
-                  <p>For each project we establish relationships with partners who we know will help us create added value for your project. As well as bringing together the public and private sectors, we make sector-overarching links to gather knowledge and 
-                  to learn from each other. The way 
-                  we undertake projects is based 
-                  on permanently applying.</p>
-                </div>
-              </div>
-              
-            </div>
-            
-          </div>
-        </div>
-      </section>  -->
-
-   <div class="services-section">
-        <div class="section-header">
-            <h2>OUR <span>SERVICES</span></h2>
-        </div>
-
-        <div class="services-grid">
-            <!-- Architecture Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Architecture">
-                        <div class="card-overlay">
-                            <span class="service-label">ARCHITECTURE</span>
-                        </div>
+        <footer id="footer" class="footer">     
+            <div class="container">
+                <div class="row-base row">
+                    <div class="col-base text-left-md col-md-4">
+                        <a href="#" class="brand">
+                            <img src="img/Insight.png" style="width: 150px;"/>
+                        </a>
                     </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="8" y="16" width="48" height="40" />
-                            <line x1="8" y1="24" x2="56" y2="24" />
-                            <line x1="8" y1="32" x2="56" y2="32" />
-                            <line x1="8" y1="40" x2="56" y2="40" />
-                            <line x1="8" y1="48" x2="56" y2="48" />
-                            <polyline points="20,8 32,16 44,8" />
-                        </svg>
-                        <h3>ARCHITECTURE</h3>
-                        <p>Comprehensive architectural design services for diverse building types and scales.</p>
-                        
+                    <div class="text-right-md col-base col-md-4">
+                        © swayambhus 2025. All Rights Reserved.
                     </div>
                 </div>
             </div>
+        </footer>
 
-            <!-- Interior Space Planning Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" alt="Interior Space Planning">
-                        <div class="card-overlay">
-                            <span class="service-label">INTERIOR SPACE PLANNING</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="12" y="20" width="40" height="32" />
-                            <line x1="20" y1="28" x2="44" y2="28" />
-                            <circle cx="38" cy="36" r="4" />
-                            <line x1="12" y1="52" x2="52" y2="52" />
-                        </svg>
-                        <h3>INTERIOR SPACE PLANNING</h3>
-                        <p>Strategic space optimization and layout design to enhance functionality and aesthetics.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feasibility Studies Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="Feasibility Studies">
-                        <div class="card-overlay">
-                            <span class="service-label">FEASIBILITY STUDIES</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="32" cy="32" r="20" />
-                            <path d="M20 32 L28 40 L44 24" />
-                        </svg>
-                        <h3>FEASIBILITY STUDIES</h3>
-                        <p>In-depth analysis and evaluation of project viability, technical requirements, and economic factors.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Development Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Project Development">
-                        <div class="card-overlay">
-                            <span class="service-label">PROJECT DEVELOPMENT</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="12" y="8" width="40" height="48" />
-                            <line x1="20" y1="20" x2="44" y2="20" />
-                            <line x1="20" y1="28" x2="44" y2="28" />
-                            <line x1="20" y1="36" x2="36" y2="36" />
-                        </svg>
-                        <h3>PROJECT DEVELOPMENT</h3>
-                        <p>Complete project management from initial concept through final execution and delivery.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Interiors Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80" alt="Interiors">
-                        <div class="card-overlay">
-                            <span class="service-label">INTERIORS</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M8 32 L32 8 L56 32 L56 56 L8 56 Z" />
-                            <rect x="24" y="36" width="16" height="20" />
-                            <line x1="40" y1="20" x2="48" y2="20" />
-                            <line x1="40" y1="26" x2="48" y2="26" />
-                        </svg>
-                        <h3>INTERIORS</h3>
-                        <p>Holistic interior design solutions creating beautiful, functional, and inspiring environments.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Master Planning Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&q=80" alt="Master Planning">
-                        <div class="card-overlay">
-                            <span class="service-label">MASTER PLANNING</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="8" y="24" width="16" height="28" />
-                            <rect x="28" y="16" width="16" height="36" />
-                            <rect x="48" y="20" width="8" height="32" />
-                        </svg>
-                        <h3>MASTER PLANNING</h3>
-                        <p>Large-scale strategic planning and development frameworks for comprehensive projects.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Residential Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Residential">
-                        <div class="card-overlay">
-                            <span class="service-label">RESIDENTIAL</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M8 32 L32 8 L56 32" />
-                            <path d="M12 32 L12 56 L52 56 L52 32" />
-                            <rect x="26" y="40" width="12" height="16" />
-                        </svg>
-                        <h3>RESIDENTIAL</h3>
-                        <p>Custom residential design creating comfortable, elegant homes tailored to your lifestyle.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Commercial Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Commercial">
-                        <div class="card-overlay">
-                            <span class="service-label">COMMERCIAL</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="12" y="12" width="40" height="40" />
-                            <line x1="12" y1="24" x2="52" y2="24" />
-                            <line x1="12" y1="36" x2="52" y2="36" />
-                            <line x1="32" y1="12" x2="32" y2="52" />
-                        </svg>
-                        <h3>COMMERCIAL</h3>
-                        <p>Innovative commercial spaces designed to enhance productivity and brand presence.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hospitality Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Hospitality">
-                        <div class="card-overlay">
-                            <span class="service-label">HOSPITALITY</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="8" y="16" width="48" height="36" />
-                            <line x1="8" y1="28" x2="56" y2="28" />
-                            <circle cx="20" cy="38" r="3" />
-                            <circle cx="32" cy="38" r="3" />
-                            <circle cx="44" cy="38" r="3" />
-                        </svg>
-                        <h3>HOSPITALITY</h3>
-                        <p>Memorable hospitality designs creating exceptional guest experiences and atmospheres.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Healthcare Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80" alt="Healthcare">
-                        <div class="card-overlay">
-                            <span class="service-label">HEALTHCARE</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="32" cy="32" r="20" />
-                            <line x1="32" y1="20" x2="32" y2="44" />
-                            <line x1="20" y1="32" x2="44" y2="32" />
-                        </svg>
-                        <h3>HEALTHCARE</h3>
-                        <p>Healing-focused healthcare facilities promoting wellness, comfort, and efficient care delivery.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Public Facilities Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80" alt="Public Facilities">
-                        <div class="card-overlay">
-                            <span class="service-label">PUBLIC FACILITIES</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="16" y="20" width="32" height="28" />
-                            <polyline points="12,28 32,12 52,28" />
-                            <line x1="28" y1="36" x2="36" y2="36" />
-                        </svg>
-                        <h3>PUBLIC FACILITIES</h3>
-                        <p>Community-centered public spaces designed for accessibility, functionality, and civic pride.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Retail Educational Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80" alt="Retail Educational">
-                        <div class="card-overlay">
-                            <span class="service-label">RETAIL EDUCATIONAL</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="12" y="16" width="40" height="36" />
-                            <path d="M20 28 L28 24 L36 28 L44 24" />
-                            <circle cx="22" cy="38" r="2" />
-                            <circle cx="32" cy="38" r="2" />
-                            <circle cx="42" cy="38" r="2" />
-                        </svg>
-                        <h3>RETAIL EDUCATIONAL</h3>
-                        <p>Dynamic retail and educational spaces fostering engagement, learning, and commerce.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recreational Projects Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=800&q=80" alt="Recreational Projects">
-                        <div class="card-overlay">
-                            <span class="service-label">RECREATIONAL PROJECTS</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="32" cy="28" r="16" />
-                            <path d="M20 44 Q32 52 44 44" />
-                            <circle cx="26" cy="24" r="2" />
-                            <circle cx="38" cy="24" r="2" />
-                        </svg>
-                        <h3>RECREATIONAL PROJECTS</h3>
-                        <p>Vibrant recreational facilities designed for leisure, sports, and community activities.</p>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- Spiritual Facilities Card -->
-            <div class="service-card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=800&q=80" alt="Spiritual Facilities">
-                        <div class="card-overlay">
-                            <span class="service-label">SPIRITUAL FACILITIES</span>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M32 8 L32 32" />
-                            <circle cx="32" cy="32" r="16" />
-                            <path d="M24 24 L40 40" />
-                            <path d="M40 24 L24 40" />
-                        </svg>
-                        <h3>SPIRITUAL FACILITIES</h3>
-                        <p>Sacred spaces designed for contemplation, worship, and spiritual connection.</p>
-                        
-                    </div>
-                </div>
+        <div class="page-lines">
+            <div class="container">
+                <div class="col-line col-xs-4"><div class="line"></div></div>
+                <div class="col-line col-xs-4"><div class="line"></div></div>
+                <div class="col-line col-xs-4"><div class="line"></div><div class="line"></div></div>
             </div>
         </div>
     </div>
-
-      <!-- Contacts -->
-
-      <!-- <section class="contacts section">
-        <div class="container">
-          <header class="section-header">
-            <h2 class="section-title">Get <span class="text-primary">in touch</span></h2>
-          </header>
-          <div class="section-content">
-            <div class="row-base row">
-              <div class="col-address col-base col-md-4">
-                1234567890<br>
-                1234567890<br>
-                info@insight.com<br>
-                Jaipur,Rajasthan,India
-              </div>
-              <div class="col-base  col-md-8">
-                <form class="js-ajax-form">
-                  <div class="row-field row">
-                    <div class="col-field col-sm-6 col-md-4">
-                      <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="Name">
-                      </div>
-                      <div class="form-group">
-                        <input type="email" class="form-control" name="email" required placeholder="Email *">
-                      </div>
-                    </div>
-                    <div class="col-field col-sm-6 col-md-4">
-                      <div class="form-group">
-                        <input type="tel" class="form-control" name="phone" placeholder="Phone">
-                      </div>
-                      <div class="form-group">
-                        <input type="text" class="form-control" name="company" placeholder="Company">
-                      </div>
-                    </div>
-                    <div class="col-field col-sm-12 col-md-4">
-                      <div class="form-group">
-                        <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                      </div>
-                    </div>
-                    <div class="col-message col-field col-sm-12">
-                      <div class="form-group">
-                        <div class="success-message"><i class="fa fa-check text-primary"></i> Thank you!. Your message is successfully sent...</div>
-                        <div class="error-message">We're sorry, but something went wrong</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-submit text-right"><button class="btn btn-shadow-2 wow swing">Send <i class="icon-next"></i></button></div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
-      <!-- Footer -->
-
-      <footer id="footer" class="footer">     
-        <div class="container">
-          <div class="row-base row">
-            <div class="col-base text-left-md col-md-4">
-              <a href="#" class="brand">
-               <img src="img/Insight.png" style="width: 150px;"/>
-              </a>
-            </div>
-        
-            <div class="text-right-md col-base col-md-4">
-              © swayambhus 2025. All Rights Reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      <!-- Lines -->
-
-      <div class="page-lines">
-        <div class="container">
-          <div class="col-line col-xs-4">
-            <div class="line"></div>
-          </div>
-          <div class="col-line col-xs-4">
-            <div class="line"></div>
-          </div>
-          <div class="col-line col-xs-4">
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<!-- SCRIPTS -->
+</div>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -845,6 +555,4 @@ Because great design starts by understanding your problems, we begin by asking q
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/interface.js"></script> 
 </body>
-
-
 </html>
