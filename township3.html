@@ -518,166 +518,131 @@
 <script src="js/interface.js"></script> 
 
 <script>
-  // Bubble Background Effect
+  // Enhanced Bubble Background Effect
   const canvas = document.getElementById('bubbleCanvas');
   const ctx = canvas.getContext('2d');
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  let mouseX = canvas.width / 2;
-  let mouseY = canvas.height / 2;
-  let mouseRadius = 150;
+  let mouseX = -1000;
+  let mouseY = -1000;
+  let mouseRadius = 120;
 
   const bubbles = [];
 
-  // Bubble class
+  // Bubble class with enhanced effects
   class Bubble {
-    constructor(x, y, radius, vx = 0, vy = 0, isStatic = false) {
+    constructor(x, y, radius) {
       this.x = x;
       this.y = y;
       this.radius = radius;
-      this.vx = vx;
-      this.vy = vy;
-      this.isStatic = isStatic;
       this.originalX = x;
       this.originalY = y;
-      this.opacity = 0.4;
+      this.vx = 0;
+      this.vy = 0;
+      this.opacity = 0.2 + Math.random() * 0.2;
+      this.hue = 200 + Math.random() * 40;
+      this.floatSpeed = 0.3 + Math.random() * 0.4;
+      this.floatOffset = Math.random() * Math.PI * 2;
+      this.shimmer = Math.random() * Math.PI * 2;
     }
 
     update() {
-      if (!this.isStatic) {
-        // Check distance from cursor
-        const dx = this.x - mouseX;
-        const dy = this.y - mouseY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+      // Gentle floating animation
+      this.y = this.originalY + Math.sin(Date.now() * 0.0008 * this.floatSpeed + this.floatOffset) * 12;
+      this.shimmer += 0.02;
+      
+      // Check distance from cursor
+      const dx = this.x - mouseX;
+      const dy = this.y - mouseY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < mouseRadius) {
-          // Attraction force towards cursor
-          const angle = Math.atan2(dy, dx);
-          const force = (mouseRadius - distance) / mouseRadius;
-          
-          this.vx = Math.cos(angle) * force * 3;
-          this.vy = Math.sin(angle) * force * 3;
-          
-          this.opacity = Math.min(1, 0.4 + force * 0.6);
-        } else {
-          // Return to original position
-          const dx = this.originalX - this.x;
-          const dy = this.originalY - this.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance > 5) {
-            const angle = Math.atan2(dy, dx);
-            const force = 0.1;
-            
-            this.vx = Math.cos(angle) * force;
-            this.vy = Math.sin(angle) * force;
-          } else {
-            this.vx *= 0.95;
-            this.vy *= 0.95;
-          }
-
-          this.opacity = Math.max(0.3, this.opacity - 0.02);
-        }
-
-        // Apply velocity
-        this.x += this.vx;
-        this.y += this.vy;
-
-        // Boundary check
-        if (this.x < 0) this.x = 0;
-        if (this.x > canvas.width) this.x = canvas.width;
-        if (this.y < 0) this.y = 0;
-        if (this.y > canvas.height) this.y = canvas.height;
+      if (distance < mouseRadius) {
+        // Repulsion from cursor
+        const angle = Math.atan2(dy, dx);
+        const force = (mouseRadius - distance) / mouseRadius;
+        
+        this.vx = Math.cos(angle) * force * 2.5;
+        this.vy = Math.sin(angle) * force * 2.5;
+        
+        this.opacity = Math.min(0.6, 0.25 + force * 0.35);
+      } else {
+        // Return to original position
+        const returnDx = this.originalX - this.x;
+        
+        this.vx += returnDx * 0.03;
+        this.vx *= 0.88;
+        
+        this.opacity = Math.max(0.15, this.opacity - 0.015);
       }
+
+      // Apply velocity
+      this.x += this.vx;
     }
 
     draw() {
-      // Draw bubble with gradient
+      const shimmerEffect = Math.sin(this.shimmer) * 0.15 + 0.85;
+      
+      // Main bubble gradient
       const gradient = ctx.createRadialGradient(
-        this.x - this.radius / 3,
-        this.y - this.radius / 3,
+        this.x - this.radius * 0.35,
+        this.y - this.radius * 0.35,
         0,
         this.x,
         this.y,
         this.radius
       );
       
-      gradient.addColorStop(0, `rgba(200, 200, 200, ${this.opacity})`);
-      gradient.addColorStop(0.5, `rgba(150, 150, 150, ${this.opacity * 0.6})`);
-      gradient.addColorStop(1, `rgba(100, 100, 100, ${this.opacity * 0.2})`);
+      gradient.addColorStop(0, `hsla(${this.hue}, 65%, 88%, ${this.opacity * shimmerEffect})`);
+      gradient.addColorStop(0.5, `hsla(${this.hue}, 55%, 78%, ${this.opacity * 0.6})`);
+      gradient.addColorStop(1, `hsla(${this.hue}, 45%, 68%, ${this.opacity * 0.15})`);
 
       ctx.fillStyle = gradient;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fill();
 
-      // Draw bubble border
-      ctx.strokeStyle = `rgba(180, 180, 180, ${this.opacity * 0.5})`;
-      ctx.lineWidth = 1;
+      // Subtle border
+      ctx.strokeStyle = `hsla(${this.hue}, 50%, 70%, ${this.opacity * 0.4})`;
+      ctx.lineWidth = 0.5;
       ctx.stroke();
 
       // Inner highlight
       const highlightGradient = ctx.createRadialGradient(
-        this.x - this.radius / 3,
-        this.y - this.radius / 3,
+        this.x - this.radius * 0.4,
+        this.y - this.radius * 0.4,
         0,
-        this.x,
-        this.y,
-        this.radius / 2
+        this.x - this.radius * 0.2,
+        this.y - this.radius * 0.2,
+        this.radius * 0.6
       );
       
-      highlightGradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity * 0.6})`);
+      highlightGradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity * 0.5 * shimmerEffect})`);
+      highlightGradient.addColorStop(0.5, `rgba(255, 255, 255, ${this.opacity * 0.2})`);
       highlightGradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
 
       ctx.fillStyle = highlightGradient;
       ctx.beginPath();
-      ctx.arc(this.x - this.radius / 3, this.y - this.radius / 3, this.radius / 2, 0, Math.PI * 2);
+      ctx.arc(this.x - this.radius * 0.3, this.y - this.radius * 0.3, this.radius * 0.5, 0, Math.PI * 2);
       ctx.fill();
     }
   }
 
-  // Create static bubbles (background)
-  function createStaticBubbles() {
-    const bubblePositions = [
-      { x: 80, y: 50, r: 12 },
-      { x: 180, y: 80, r: 15 },
-      { x: 280, y: 60, r: 10 },
-      { x: 380, y: 90, r: 13 },
-      { x: 480, y: 40, r: 11 },
-      { x: 580, y: 70, r: 14 },
-      { x: 680, y: 50, r: 9 },
-      { x: 780, y: 85, r: 12 },
-
-      { x: 100, y: 150, r: 14 },
-      { x: 200, y: 180, r: 11 },
-      { x: 300, y: 160, r: 13 },
-      { x: 400, y: 190, r: 12 },
-      { x: 500, y: 140, r: 15 },
-      { x: 600, y: 170, r: 10 },
-      { x: 700, y: 155, r: 11 },
-
-      { x: 150, y: 280, r: 12 },
-      { x: 250, y: 300, r: 14 },
-      { x: 350, y: 270, r: 11 },
-      { x: 450, y: 310, r: 13 },
-      { x: 550, y: 280, r: 10 },
-      { x: 650, y: 295, r: 12 },
-
-      { x: 120, y: 420, r: 11 },
-      { x: 220, y: 450, r: 13 },
-      { x: 320, y: 430, r: 12 },
-      { x: 420, y: 460, r: 14 },
-      { x: 520, y: 420, r: 11 },
-      { x: 620, y: 445, r: 13 }
-    ];
-
-    bubblePositions.forEach((pos, index) => {
-      if (index < bubblePositions.length) {
-        bubbles.push(new Bubble(pos.x, pos.y, pos.r));
+  // Create bubbles with better distribution
+  function createBubbles() {
+    const cols = Math.floor(canvas.width / 100);
+    const rows = Math.floor(canvas.height / 100);
+    
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const x = col * 100 + 50 + (Math.random() - 0.5) * 40;
+        const y = row * 100 + 50 + (Math.random() - 0.5) * 40;
+        const radius = 6 + Math.random() * 5;
+        
+        bubbles.push(new Bubble(x, y, radius));
       }
-    });
+    }
   }
 
   // Mouse move event
@@ -688,27 +653,25 @@
 
   // Mouse leave event
   document.addEventListener('mouseleave', () => {
-    mouseX = canvas.width / 2;
-    mouseY = canvas.height / 2;
+    mouseX = -1000;
+    mouseY = -1000;
   });
 
   // Window resize event
   window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    bubbles.length = 0;
+    createBubbles();
   });
 
   // Animation loop for bubbles
   function animateBubbles() {
-    // Clear canvas with background
-    ctx.fillStyle = 'rgba(245, 245, 245, 1)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Subtle gradient background
-    const gradBg = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    gradBg.addColorStop(0, 'rgba(255, 255, 255, 0.1)');
-    gradBg.addColorStop(1, 'rgba(200, 200, 200, 0.05)');
-    ctx.fillStyle = gradBg;
+    // Clear canvas with soft gradient background
+    const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    bgGradient.addColorStop(0, '#f8f9fa');
+    bgGradient.addColorStop(1, '#e9ecef');
+    ctx.fillStyle = bgGradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Update and draw bubbles
@@ -721,7 +684,7 @@
   }
 
   // Initialize bubbles
-  createStaticBubbles();
+  createBubbles();
   animateBubbles();
 
   // Gallery modal functionality
