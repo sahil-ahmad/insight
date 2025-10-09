@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet" media="screen">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
   .project-title-section {
@@ -115,6 +115,7 @@
     border-radius: 8px;
     aspect-ratio: 4/3;
     position: relative;
+    cursor: pointer;
   }
 
   .gallery-item img {
@@ -125,7 +126,165 @@
   }
 
   .gallery-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.1);
+  }
+
+  /* Zoom Overlay */
+  .gallery-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+  }
+
+  .zoom-icon {
+    color: #fff;
+    font-size: 40px;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover .zoom-icon {
+    transform: scale(1);
+  }
+
+  /* Modal Styles */
+  .image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border: none;
+    display: block;
+    margin: auto;
+    animation: zoomIn 0.3s ease;
+  }
+
+  @keyframes zoomIn {
+    from { transform: scale(0.8); }
+    to { transform: scale(1); }
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+  }
+
+  .close:hover {
+    color: #ccc;
+    transform: rotate(90deg);
+  }
+
+  /* Navigation Arrows */
+  .modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    padding: 20px;
+    user-select: none;
+    transition: all 0.3s ease;
+    z-index: 1001;
+  }
+
+  .modal-nav:hover {
+    color: #b8a07e;
+    transform: translateY(-50%) scale(1.2);
+  }
+
+  .modal-prev {
+    left: 20px;
+  }
+
+  .modal-next {
+    right: 20px;
+  }
+
+  /* Image Counter */
+  .image-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 16px;
+    z-index: 1001;
+  }
+
+  /* Bubble Cursor Styles */
+  .cursor-bubble {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(184, 160, 126, 0.8), rgba(184, 160, 126, 0.3));
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+    box-shadow: 0 0 20px rgba(184, 160, 126, 0.6);
+    transform: translate(-50%, -50%);
+  }
+
+  .bubble {
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(184, 160, 126, 0.8), rgba(184, 160, 126, 0.1));
+    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.2), 0 0 20px rgba(184, 160, 126, 0.4);
+    z-index: 5;
+  }
+
+  @keyframes bubbleFloat {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) scale(0.3);
+      opacity: 0;
+    }
+  }
+
+  .bubble.animate {
+    animation: bubbleFloat 1.5s ease-out forwards;
   }
 
   @media (max-width: 768px) {
@@ -149,6 +308,34 @@
 
     .project-gallery {
       grid-template-columns: 1fr;
+    }
+
+    .close {
+      font-size: 30px;
+      right: 20px;
+      top: 15px;
+    }
+
+    .modal-content {
+      max-width: 95%;
+      max-height: 85%;
+    }
+
+    .modal-nav {
+      font-size: 30px;
+      padding: 10px;
+    }
+
+    .modal-prev {
+      left: 10px;
+    }
+
+    .modal-next {
+      right: 10px;
+    }
+
+    .zoom-icon {
+      font-size: 30px;
     }
   }
 </style>
@@ -244,7 +431,7 @@
     <!-- Main Hero Section -->
     <main class="main main-inner main-project"  data-stellar-background-ratio="0.6">
       <div class="container">
-        <header class="main-header"><h1>Porftolio</h1></header>
+        <header class="main-header"><h1>Portfolio</h1></header>
       </div>
       <div class="page-lines">
         <div class="container">
@@ -263,20 +450,6 @@
       <!-- Project Title Section -->
       <section class="project-title-section">
         <div class="project-subtitle">office</div>
-        <!-- <h1 class="project-main-title">Casa</h1>
-        <h2 class="project-secondary-title">Arco</h2> -->
-        
-        <!-- <div class="project-stats">
-          <div class="stat-item">
-            <div class="stat-label">PUBLIC AREA</div>
-            <div class="stat-value">0</div>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <div class="stat-label">BEDROOMS</div>
-            <div class="stat-value">3</div>
-          </div>
-        </div> -->
       </section>
 
       <!-- Project Description -->
@@ -291,15 +464,26 @@
 
       <!-- Project Gallery -->
       <section class="project-gallery">
-        <div class="gallery-item">
-          <img src="img\office\JAI CHOPRA OFFICE\raj ji office 11.jpg" alt="Interior Design 1">
+        <div class="gallery-item" data-index="0">
+          <img src="img/office/JAI CHOPRA OFFICE/raj ji office 11.jpg" alt="Interior Design 1">
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-search-plus zoom-icon"></i>
+          </div>
         </div>
-    
-      
-
-
+        
 
       </section>
+
+      <!-- Image Modal -->
+      <div id="imageModal" class="image-modal">
+        <span class="close">&times;</span>
+        <span class="modal-nav modal-prev">&#10094;</span>
+        <span class="modal-nav modal-next">&#10095;</span>
+        <img class="modal-content" id="modalImage" alt="Project Image">
+        <div class="image-counter">
+          <span id="currentImage">1</span> / <span id="totalImages">1</span>
+        </div>
+      </div>
 
       <!-- Footer -->
       <footer id="footer" class="footer" style="margin-top: 80px;">     
@@ -345,6 +529,140 @@
 <script src="js/jquery.magnific-popup.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/interface.js"></script> 
+
+<script>
+  // Bubble Cursor Effect
+  const bubbleContainer = document.body;
+  const cursorBubble = document.createElement('div');
+  cursorBubble.className = 'cursor-bubble';
+  document.body.appendChild(cursorBubble);
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  // Track mouse movement
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    // Update cursor position
+    cursorBubble.style.left = mouseX + 'px';
+    cursorBubble.style.top = mouseY + 'px';
+
+    // Create bubble occasionally
+    if (Math.random() > 0.85) {
+      createBubble(mouseX, mouseY);
+    }
+  });
+
+  function createBubble(x, y) {
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+
+    // Random bubble size between 10px and 40px
+    const size = Math.random() * 30 + 10;
+    bubble.style.width = size + 'px';
+    bubble.style.height = size + 'px';
+
+    // Offset bubble slightly from cursor
+    const offsetX = (Math.random() - 0.5) * 40;
+    const offsetY = (Math.random() - 0.5) * 40;
+
+    bubble.style.left = (x + offsetX) + 'px';
+    bubble.style.top = (y + offsetY) + 'px';
+
+    bubbleContainer.appendChild(bubble);
+
+    // Add animation class
+    setTimeout(() => {
+      bubble.classList.add('animate');
+    }, 10);
+
+    // Remove bubble after animation
+    setTimeout(() => {
+      bubble.remove();
+    }, 1500);
+  }
+
+  // Hide default cursor
+  document.body.style.cursor = 'none';
+
+  // Gallery modal functionality
+  var modal = document.getElementById("imageModal");
+  var modalImg = document.getElementById("modalImage");
+  var galleryItems = document.getElementsByClassName("gallery-item");
+  var currentImageSpan = document.getElementById("currentImage");
+  var totalImagesSpan = document.getElementById("totalImages");
+  var currentIndex = 0;
+  var images = [];
+
+  // Collect all images
+  for (var i = 0; i < galleryItems.length; i++) {
+    var img = galleryItems[i].querySelector('img');
+    images.push({
+      src: img.src,
+      alt: img.alt
+    });
+  }
+
+  // Set total images count
+  totalImagesSpan.textContent = images.length;
+
+  // Add click event to each gallery item
+  for (var i = 0; i < galleryItems.length; i++) {
+    galleryItems[i].onclick = function() {
+      currentIndex = parseInt(this.getAttribute('data-index'));
+      openModal(currentIndex);
+    }
+  }
+
+  function openModal(index) {
+    modal.style.display = "flex";
+    modalImg.src = images[index].src;
+    modalImg.alt = images[index].alt;
+    currentImageSpan.textContent = index + 1;
+  }
+
+  // Close button
+  var closeBtn = document.getElementsByClassName("close")[0];
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // Previous button
+  var prevBtn = document.getElementsByClassName("modal-prev")[0];
+  prevBtn.onclick = function() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    openModal(currentIndex);
+  }
+
+  // Next button
+  var nextBtn = document.getElementsByClassName("modal-next")[0];
+  nextBtn.onclick = function() {
+    currentIndex = (currentIndex + 1) % images.length;
+    openModal(currentIndex);
+  }
+
+  // Close modal when clicking outside the image
+  modal.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(event) {
+    if (modal.style.display === 'flex') {
+      if (event.key === 'Escape') {
+        modal.style.display = "none";
+      } else if (event.key === 'ArrowLeft') {
+        prevBtn.click();
+      } else if (event.key === 'ArrowRight') {
+        nextBtn.click();
+      }
+    }
+  });
+</script>
 </body>
 
 </html>
