@@ -549,6 +549,23 @@ label.error{
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
+#brand-logo{
+    position: absolute;
+  z-index: 4;
+  left: -0.5rem;
+  top: 0;
+  width: 15%;
+  height: 15%;
+  padding: 4.8vmin 2em 4.8vmin;
+  text-align: center;
+  transition: all 0.3s;
+  /* Background blur effect */
+  background: rgba(255, 255, 255, 0.2); /* Light transparent background */
+  backdrop-filter: blur(10px); /* Blur intensity */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  border-radius: 0 0 20px 0 ; /* Optional: smooth corners */
+  /* border: 1px solid rgba(255, 255, 255, 0.3); Optional: glassy border */
+}
 
 .brand{
   display: inline-block;
@@ -776,7 +793,7 @@ label.error{
 }
 #navbar-desctop-menu li a:hover,
 #navbar-desctop-menu .active > a{
-  color:  #DE2D23;
+  color:  #a50404;
 }
 
 .navbar-desctop-menu  > li{
@@ -1193,23 +1210,6 @@ label.error{
 .slide-subtitle{
   font-size: 18px;
   line-height: 1.7;
-}
-.rev-slidebg::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
-  z-index: 1;
-}
-
-.slide-title,
-.slide-subtitle {
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
-  position: relative;
-  z-index: 10 !important;
 }
 
 
