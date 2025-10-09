@@ -4,10 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="format-detection" content="telephone=no" />
-    <title>Insight - Architecture</title>
+    <title>Insight - Contact Us</title>
 
     <!-- Favicons -->
-    <!-- <link rel="shortcut icon" href="favicon.png"> -->
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link
       rel="apple-touch-icon"
@@ -37,10 +36,35 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <style>
+      /* Bubble Background Styles */
+      #bubbleCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .layout {
+        position: relative;
+        z-index: 2;
+      }
+
+      .header-inner {
+        position: relative;
+        z-index: 3;
+      }
+    </style>
   </head>
   <body>
-    <!-- Loader -->
+    <!-- Bubble Canvas Background -->
+    <canvas id="bubbleCanvas"></canvas>
 
+    <!-- Loader -->
     <div class="loader">
       <div class="page-lines">
         <div class="container">
@@ -67,7 +91,6 @@
     </div>
 
     <!-- Header -->
-
     <header id="top" class="header-inner">
       <div class="brand-panel">
         <a href="index.html" class="brand js-target-scroll">
@@ -86,59 +109,35 @@
         <div class="vertical-panel-info">
           <div class="line"></div>
         </div>
-         <ul class="social-list">
-            <li><a href="https://wa.me/9828312666/?text=urlencodedtext"><i class="fa-brands fa-whatsapp"></i></a></li>
-            <li><a href="https://www.instagram.com/insight_studio_jaipur?igsh=MXhhaDR4OHZjZ2t2Zw=="><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-            
+        <ul class="social-list">
+          <li><a href="https://wa.me/9828312666/?text=urlencodedtext"><i class="fa-brands fa-whatsapp"></i></a></li>
+          <li><a href="https://www.instagram.com/insight_studio_jaipur?igsh=MXhhaDR4OHZjZ2t2Zw=="><i class="fa-brands fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
         </ul>  
       </div>
 
-      <!-- Navigation Desctop -->
-
+      <!-- Navigation Desktop -->
       <nav class="navbar-desctop visible-md visible-lg">
         <div class="container">
           <a href="#top" class="brand js-target-scroll">
             <img src="img/Insight.png" style="width: 150px" />
           </a>
           <ul class="navbar-desctop-menu">
-            <li class="active">
-              <a href="index.html">Home</a>
-            </li>
-            <li>
-              <a href="about.html">About us</a>
-            </li>
-            <!-- <li>
-              <a href="architecture.html">Architecture</a>
-            </li>
-            <li>
-              <a href="interior.html">Interior</a>
-            </li> -->
-            <li >
-              <a href="project.html">Project</a>
-            </li>
-
-            <li>
-              <a href="publication.html">Publication</a>
-            </li>
-            
-            <li class="active">
-              <a href="contacts.html">Contacts</a>
-            </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="publication.html">Publication</a></li>
+            <li class="active"><a href="contacts.html">Contacts</a></li>
           </ul>
         </div>
       </nav>
 
       <!-- Navigation Mobile -->
-
       <nav class="navbar-mobile">
         <a href="#top" class="brand js-target-scroll">
           <img src="img/Insight.png" style="width: 95px" />
         </a>
-
-        <!-- Navbar Collapse -->
-
         <button
           type="button"
           class="navbar-toggle collapsed"
@@ -150,27 +149,23 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbar-mobile">
-         <ul class="navbar-nav-mobile">
-                  <li ><a href="index.html">Home</a></li>
-                <li ><a href="about.html">About us</a></li>
-                <li class="active"><a href="project.html">Project</a></li>
-                <li><a href="publication.html">Publication</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
+          <ul class="navbar-nav-mobile">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="publication.html">Publication</a></li>
+            <li class="active"><a href="contacts.html">Contacts</a></li>
+          </ul>
         </div>
       </nav>
     </header>
 
     <!-- Layout -->
-
     <div class="layout">
-      <!-- Home -->
-
+      <!-- Main Header -->
       <main
         class="main main-inner main-project"
-        
         data-stellar-background-ratio="0.6"
       >
         <div class="container">
@@ -189,12 +184,11 @@
       </main>
 
       <div class="content">
-        <!-- Contacts Details -->
-
+        <!-- Contact Details -->
         <section class="contact-details">
           <div class="col-map col-md-7">
             <div id="map" class="gmap col-md-7">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.499995563273!2d75.80551307543854!3d26.88762257666221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db7eb0689bc7b%3A0x15dd69baabc68969!2sINSIGHT%20ARCHITECT!5e0!3m2!1sen!2sin!4v1759913528968!5m2!1sen!2sin" width="750" height="750" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.499995563273!2d75.80551307543854!3d26.88762257666221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db7eb0689bc7b%3A0x15dd69baabc68969!2sINSIGHT%20ARCHITECT!5e0!3m2!1sen!2sin!4v1759913528968!5m2!1sen!2sin" width="750" height="750" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
           <div class="contact-info col-md-5 col-md-offset-7">
@@ -232,62 +226,7 @@
           </div>
         </section>
 
-        <!-- Contacts -->
-
-        <!-- <section class="contacts section">
-        <div class="container">
-          <header class="section-header">
-            <h2 class="section-title">Get <span class="text-primary">in touch</span></h2>
-          </header>
-          <div class="section-content">
-            <div class="row-base row">
-              <div class="col-address col-base col-md-4">
-                1234567890<br>
-                1234567890<br>
-                info@insight.com<br>
-                Jaipur,Rajasthan,India
-              </div>
-              <div class="col-base col-md-8">
-                <form class="js-ajax-form">
-                  <div class="row-field row">
-                    <div class="col-field col-sm-6 col-md-4">
-                      <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="Name">
-                      </div>
-                      <div class="form-group">
-                        <input type="email" class="form-control" name="email" required placeholder="Email *">
-                      </div>
-                    </div>
-                    <div class="col-field col-sm-6 col-md-4">
-                      <div class="form-group">
-                        <input type="tel" class="form-control" name="phone" placeholder="Phone">
-                      </div>
-                      <div class="form-group">
-                        <input type="text" class="form-control" name="company" placeholder="Company">
-                      </div>
-                    </div>
-                    <div class="col-field col-sm-12 col-md-4">
-                      <div class="form-group">
-                        <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                      </div>
-                    </div>
-                    <div class="col-message col-field col-sm-12">
-                      <div class="form-group">
-                        <div class="success-message"><i class="fa fa-check text-primary"></i> Thank you!. Your message is successfully sent...</div>
-                        <div class="error-message">We're sorry, but something went wrong</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-submit text-right"><button class="btn btn-shadow-2 wow swing">Send <i class="icon-next"></i></button></div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
         <!-- Footer -->
-
         <footer id="footer" class="footer">
           <div class="container">
             <div class="row-base row">
@@ -296,7 +235,6 @@
                   <img src="img/Insight.png" style="width: 150px" />
                 </a>
               </div>
-
               <div class="text-right-md col-base col-md-4">
                 © <a href="https://swayambhus.com/">swayambhus</a> 2025. All Rights Reserved. 
               </div>
@@ -305,7 +243,6 @@
         </footer>
 
         <!-- Lines -->
-
         <div class="page-lines">
           <div class="container">
             <div class="col-line col-xs-4">
@@ -324,7 +261,6 @@
     </div>
 
     <!-- SCRIPTS -->
-
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/smoothscroll.js"></script>
@@ -336,5 +272,153 @@
     <script src="js/interface.js"></script>
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyCwVuYiM-83l2IdjpT9uC0lg4jBm8-w4j8"></script>
     <script src="js/gmap.html"></script>
+    <script>
+      // Bubble Background Effect
+      const canvas = document.getElementById('bubbleCanvas');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let mouseX = -1000;
+      let mouseY = -1000;
+      let mouseRadius = 120;
+
+      const bubbles = [];
+
+      class Bubble {
+        constructor(x, y, radius) {
+          this.x = x;
+          this.y = y;
+          this.radius = radius;
+          this.originalX = x;
+          this.originalY = y;
+          this.vx = 0;
+          this.vy = 0;
+          this.opacity = 0.2 + Math.random() * 0.2;
+          this.hue = 200 + Math.random() * 40;
+          this.floatSpeed = 0.3 + Math.random() * 0.4;
+          this.floatOffset = Math.random() * Math.PI * 2;
+          this.shimmer = Math.random() * Math.PI * 2;
+        }
+
+        update() {
+          this.y = this.originalY + Math.sin(Date.now() * 0.0008 * this.floatSpeed + this.floatOffset) * 12;
+          this.shimmer += 0.02;
+          
+          const dx = this.x - mouseX;
+          const dy = this.y - mouseY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < mouseRadius) {
+            const angle = Math.atan2(dy, dx);
+            const force = (mouseRadius - distance) / mouseRadius;
+            this.vx = Math.cos(angle) * force * 2.5;
+            this.vy = Math.sin(angle) * force * 2.5;
+            this.opacity = Math.min(0.6, 0.25 + force * 0.35);
+          } else {
+            const returnDx = this.originalX - this.x;
+            this.vx += returnDx * 0.03;
+            this.vx *= 0.88;
+            this.opacity = Math.max(0.15, this.opacity - 0.015);
+          }
+
+          this.x += this.vx;
+        }
+
+        draw() {
+          const shimmerEffect = Math.sin(this.shimmer) * 0.15 + 0.85;
+          const gradient = ctx.createRadialGradient(
+            this.x - this.radius * 0.35,
+            this.y - this.radius * 0.35,
+            0,
+            this.x,
+            this.y,
+            this.radius
+          );
+          
+          gradient.addColorStop(0, `hsla(${this.hue}, 65%, 88%, ${this.opacity * shimmerEffect})`);
+          gradient.addColorStop(0.5, `hsla(${this.hue}, 55%, 78%, ${this.opacity * 0.6})`);
+          gradient.addColorStop(1, `hsla(${this.hue}, 45%, 68%, ${this.opacity * 0.15})`);
+
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = `hsla(${this.hue}, 50%, 70%, ${this.opacity * 0.4})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+
+          const highlightGradient = ctx.createRadialGradient(
+            this.x - this.radius * 0.4,
+            this.y - this.radius * 0.4,
+            0,
+            this.x - this.radius * 0.2,
+            this.y - this.radius * 0.2,
+            this.radius * 0.6
+          );
+          
+          highlightGradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity * 0.5 * shimmerEffect})`);
+          highlightGradient.addColorStop(0.5, `rgba(255, 255, 255, ${this.opacity * 0.2})`);
+          highlightGradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+
+          ctx.fillStyle = highlightGradient;
+          ctx.beginPath();
+          ctx.arc(this.x - this.radius * 0.3, this.y - this.radius * 0.3, this.radius * 0.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function createBubbles() {
+        const cols = Math.floor(canvas.width / 100);
+        const rows = Math.floor(canvas.height / 100);
+        
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const x = col * 100 + 50 + (Math.random() - 0.5) * 40;
+            const y = row * 100 + 50 + (Math.random() - 0.5) * 40;
+            const radius = 6 + Math.random() * 5;
+            
+            bubbles.push(new Bubble(x, y, radius));
+          }
+        }
+      }
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      document.addEventListener('mouseleave', () => {
+        mouseX = -1000;
+        mouseY = -1000;
+      });
+
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        bubbles.length = 0;
+        createBubbles();
+      });
+
+      function animateBubbles() {
+        const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        bgGradient.addColorStop(0, '#f8f9fa');
+        bgGradient.addColorStop(1, '#e9ecef');
+        ctx.fillStyle = bgGradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        bubbles.forEach((bubble) => {
+          bubble.update();
+          bubble.draw();
+        });
+
+        requestAnimationFrame(animateBubbles);
+      }
+
+      createBubbles();
+      animateBubbles();
+    </script>
   </body>
 </html>

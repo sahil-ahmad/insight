@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insight - Publication</title>
+<title>Insight - Office</title>
 
 <!-- Favicons -->
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -184,10 +184,33 @@
       padding: 8px;
     }
   }
+
+  /* Bubble Background Styles */
+  #bubbleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .layout {
+    position: relative;
+    z-index: 2;
+  }
+
+  .header-inner {
+    position: relative;
+    z-index: 3;
+  }
 </style>
 </head>
 
 <body>
+  <!-- Bubble Canvas Background -->
+  <canvas id="bubbleCanvas"></canvas>
   
   <!-- Loader -->
   <div class="loader">
@@ -228,37 +251,26 @@
       <div class="vertical-panel-info">
         <div class="line"></div>
       </div>
-    <ul class="social-list">
-            <li><a href="https://wa.me/9828312666/?text=urlencodedtext"><i class="fa-brands fa-whatsapp"></i></a></li>
-            <li><a href="https://www.instagram.com/insight_studio_jaipur?igsh=MXhhaDR4OHZjZ2t2Zw=="><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-            
-        </ul>   
+      <ul class="social-list">
+        <li><a href="https://wa.me/9828312666/?text=urlencodedtext"><i class="fa-brands fa-whatsapp"></i></a></li>
+        <li><a href="https://www.instagram.com/insight_studio_jaipur?igsh=MXhhaDR4OHZjZ2t2Zw=="><i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+      </ul>   
     </div>
 
     <!-- Navigation Desktop -->
     <nav class="navbar-desctop visible-md visible-lg">
-    <div class="container">
+      <div class="container">
         <a href="#top" class="brand js-target-scroll">
           <img src="img/Insight.png" style="width: 150px" />
         </a>
         <ul class="navbar-desctop-menu">
-          <li>
-            <a href="index.html">Home</a>
-          </li>
-          <li>
-            <a href="about.html">About us</a>
-          </li>
-          <li class="active">
-            <a href="project.html">Project</a>
-          </li>
-          <li>
-            <a href="publication.html">Publication</a>
-          </li>
-          <li>
-            <a href="contacts.html">Contacts</a>
-          </li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li class="active"><a href="project.html">Project</a></li>
+          <li><a href="publication.html">Publication</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
         </ul>
       </div>
     </nav>
@@ -268,31 +280,28 @@
       <a href="#top" class="brand js-target-scroll">
         <img src="img/Insight.png" style="width: 95px" />
       </a>
-
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-mobile">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbar-mobile"> 
         <ul class="navbar-nav-mobile">
-                  <li ><a href="index.html">Home</a></li>
-                <li ><a href="about.html">About us</a></li>
-                <li class="active"><a href="project.html">Project</a></li>
-                <li><a href="publication.html">Publication</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li class="active"><a href="project.html">Project</a></li>
+          <li><a href="publication.html">Publication</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
+        </ul>
       </div>
     </nav> 
   </header>
 
   <!-- Layout -->
   <div class="layout">
-    
     <!-- Main Header -->
-    <main class="main main-inner main-project"  data-stellar-background-ratio="0.6">
+    <main class="main main-inner main-project" data-stellar-background-ratio="0.6">
       <div class="container">
         <header class="main-header"><h1>Office</h1></header>
       </div>
@@ -309,19 +318,16 @@
     </main>
 
     <div class="content">   
-      
       <!-- Projects Section -->
       <section class="projects-section">
         <div class="container">
           <div class="projects-grid">
-            
             <!-- Project Box 1 -->
             <div class="project-box">
               <div class="project-image">
-                <img src="img\office\JAI CHOPRA OFFICE\raj ji office 11.jpg" alt="Modern Villa">
+                <img src="img/office/JAI CHOPRA OFFICE/raj ji office 11.jpg" alt="Jai Chopra Office">
                 <div class="project-overlay">
                   <div class="project-overlay-content">
-                    <!-- <a href="#" class="icon-btn " data-image="img\office\JAI CHOPRA OFFICE\raj ji office 11.jpg"></a> -->
                     <a href="office1.html" class="icon-btn arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
                   </div>
                 </div>
@@ -331,11 +337,10 @@
             <!-- Project Box 2 -->
             <div class="project-box">
               <div class="project-image">
-                <img src="" alt="Urban Complex">
+                <img src="" alt="Office Project 2">
                 <div class="project-overlay">
                   <div class="project-overlay-content">
-                    <!-- <a href="#"  data-image="img\residency\ARVIND GARG\mt_08.jpg"></a> -->
-                    <a href="residency2.html" class="icon-btn arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="office2.html" class="icon-btn arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
                   </div>
                 </div>
               </div>
@@ -344,23 +349,14 @@
             <!-- Project Box 3 -->
             <div class="project-box">
               <div class="project-image">
-                <img src="" alt="Interior Design">
+                <img src="" alt="Office Project 3">
                 <div class="project-overlay">
                   <div class="project-overlay-content">
-                    <!-- <a href="#" class="icon-btn " data-image="img\residency\ARVINDER SINGH\arvinderji_02.jpg"></a> -->
-                    <a href="residency3.html" class="icon-btn arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="office3.html" class="icon-btn arrow-btn"><i class="fa-solid fa-arrow-right"></i></a>
                   </div>
                 </div>
               </div>
             </div>
-
-          
-
-         
-
-         
-           
-
           </div>
         </div>
       </section>
@@ -416,39 +412,169 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/interface.js"></script> 
   <script>
-    // Get the modal
+    // Modal Script (simplified since no magnify buttons are active)
     var modal = document.getElementById("imageModal");
-
-    // Get the image and insert it inside the modal
     var modalImg = document.getElementById("modalImage");
-    var magnifyButtons = document.getElementsByClassName("");
-
-    // Add click event to each magnify button
-    for (var i = 0; i < magnifyButtons.length; i++) {
-      magnifyButtons[i].onclick = function(e) {
-        e.preventDefault();
-        modal.style.display = "flex";
-        modalImg.src = this.getAttribute("data-image");
-        modalImg.alt = "Project Image";
-      }
-    }
-
-    // Get the <span> element that closes the modal
     var closeBtn = document.getElementsByClassName("close")[0];
 
-    // When the user clicks on <span> (x), close the modal
     closeBtn.onclick = function() {
       modal.style.display = "none";
       modalImg.src = "";
     }
 
-    // Close modal when clicking outside the image
     modal.onclick = function(event) {
       if (event.target === modal) {
         modal.style.display = "none";
         modalImg.src = "";
       }
     }
+
+    // Bubble Background Effect
+    const canvas = document.getElementById('bubbleCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let mouseX = -1000;
+    let mouseY = -1000;
+    let mouseRadius = 120;
+
+    const bubbles = [];
+
+    class Bubble {
+      constructor(x, y, radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.originalX = x;
+        this.originalY = y;
+        this.vx = 0;
+        this.vy = 0;
+        this.opacity = 0.2 + Math.random() * 0.2;
+        this.hue = 200 + Math.random() * 40;
+        this.floatSpeed = 0.3 + Math.random() * 0.4;
+        this.floatOffset = Math.random() * Math.PI * 2;
+        this.shimmer = Math.random() * Math.PI * 2;
+      }
+
+      update() {
+        this.y = this.originalY + Math.sin(Date.now() * 0.0008 * this.floatSpeed + this.floatOffset) * 12;
+        this.shimmer += 0.02;
+        
+        const dx = this.x - mouseX;
+        const dy = this.y - mouseY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < mouseRadius) {
+          const angle = Math.atan2(dy, dx);
+          const force = (mouseRadius - distance) / mouseRadius;
+          this.vx = Math.cos(angle) * force * 2.5;
+          this.vy = Math.sin(angle) * force * 2.5;
+          this.opacity = Math.min(0.6, 0.25 + force * 0.35);
+        } else {
+          const returnDx = this.originalX - this.x;
+          this.vx += returnDx * 0.03;
+          this.vx *= 0.88;
+          this.opacity = Math.max(0.15, this.opacity - 0.015);
+        }
+
+        this.x += this.vx;
+      }
+
+      draw() {
+        const shimmerEffect = Math.sin(this.shimmer) * 0.15 + 0.85;
+        const gradient = ctx.createRadialGradient(
+          this.x - this.radius * 0.35,
+          this.y - this.radius * 0.35,
+          0,
+          this.x,
+          this.y,
+          this.radius
+        );
+        
+        gradient.addColorStop(0, `hsla(${this.hue}, 65%, 88%, ${this.opacity * shimmerEffect})`);
+        gradient.addColorStop(0.5, `hsla(${this.hue}, 55%, 78%, ${this.opacity * 0.6})`);
+        gradient.addColorStop(1, `hsla(${this.hue}, 45%, 68%, ${this.opacity * 0.15})`);
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = `hsla(${this.hue}, 50%, 70%, ${this.opacity * 0.4})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+
+        const highlightGradient = ctx.createRadialGradient(
+          this.x - this.radius * 0.4,
+          this.y - this.radius * 0.4,
+          0,
+          this.x - this.radius * 0.2,
+          this.y - this.radius * 0.2,
+          this.radius * 0.6
+        );
+        
+        highlightGradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity * 0.5 * shimmerEffect})`);
+        highlightGradient.addColorStop(0.5, `rgba(255, 255, 255, ${this.opacity * 0.2})`);
+        highlightGradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+
+        ctx.fillStyle = highlightGradient;
+        ctx.beginPath();
+        ctx.arc(this.x - this.radius * 0.3, this.y - this.radius * 0.3, this.radius * 0.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function createBubbles() {
+      const cols = Math.floor(canvas.width / 100);
+      const rows = Math.floor(canvas.height / 100);
+      
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const x = col * 100 + 50 + (Math.random() - 0.5) * 40;
+          const y = row * 100 + 50 + (Math.random() - 0.5) * 40;
+          const radius = 6 + Math.random() * 5;
+          
+          bubbles.push(new Bubble(x, y, radius));
+        }
+      }
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    document.addEventListener('mouseleave', () => {
+      mouseX = -1000;
+      mouseY = -1000;
+    });
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      bubbles.length = 0;
+      createBubbles();
+    });
+
+    function animateBubbles() {
+      const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      bgGradient.addColorStop(0, '#f8f9fa');
+      bgGradient.addColorStop(1, '#e9ecef');
+      ctx.fillStyle = bgGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      bubbles.forEach((bubble) => {
+        bubble.update();
+        bubble.draw();
+      });
+
+      requestAnimationFrame(animateBubbles);
+    }
+
+    createBubbles();
+    animateBubbles();
   </script>
 </body>
 

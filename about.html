@@ -6,7 +6,6 @@
 <title>Insight - Architecture</title> 
 
 <!-- Favicons -->
-<!-- <link rel="shortcut icon" href="favicon.png"> -->
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
@@ -473,9 +472,33 @@
         width: 120px;
     }
 }
+
+/* Bubble Background Styles */
+#bubbleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.layout {
+    position: relative;
+    z-index: 2;
+}
+
+.header-inner {
+    position: relative;
+    z-index: 3;
+}
 </style>
 </head>
 <body>
+<!-- Bubble Canvas Background -->
+<canvas id="bubbleCanvas"></canvas>
+
 <div class="loader">
     <div class="page-lines">
         <div class="container">
@@ -508,7 +531,6 @@
             <li><a href="https://www.instagram.com/insight_studio_jaipur?igsh=MXhhaDR4OHZjZ2t2Zw=="><i class="fa-brands fa-instagram"></i></a></li>
             <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
             <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-            
         </ul>  
     </div>
     <nav class="navbar-desctop visible-md visible-lg">
@@ -537,9 +559,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar-mobile"> 
             <ul class="navbar-nav-mobile">
-                  <li ><a href="index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li class="active"><a href="about.html">About us</a></li>
-                <li ><a href="project.html">Project</a></li>
+                <li><a href="project.html">Project</a></li>
                 <li><a href="publication.html">Publication</a></li>
                 <li><a href="contacts.html">Contacts</a></li>
             </ul>
@@ -562,7 +584,7 @@
     </main>
 
     <div class="content"> 
-             <section id="about" class="about section">
+        <section id="about" class="about section">
             <div class="container">
                 <div class="entry">
                     <h3 class="entry-title" style="font-size: 30px;">INSIGHT<span class="text-primary">.</span></h3>
@@ -574,7 +596,7 @@ From residential sanctuaries to dynamic commercial spaces, we approach each proj
 
 At the heart of our work is a passion for design that enhances lives. Every line we draw, material we select, and space we craft is driven by our belief that good design is not just seen—it is felt.<br/>
 
-Let us help you bring your vision to life through a space that speaks to who you are and how you live or work.</p>
+Let us help you bring your vision to life through a space that speaks to who you are and how you live or work.</p>
                 </div>
             </div>
         </section>  
@@ -592,15 +614,11 @@ Craftsmanship is central to our approach. We collaborate with skilled artisans a
 
 Each space we design is unique, yet our core values remain consistent:<br/>
 
-Contextual Relevance – Designing in harmony with environment, culture, and history
-
-Spiritual Sensibility – Creating environments that inspire calm, focus, and connection
-
-Celebration of Craft – Honoring artistry through detail, materiality, and texture
-
-Client-Centric Process – Listening deeply, designing responsively
-
-Timeless Aesthetic – Balancing innovation with enduring design principles
+Contextual Relevance – Designing in harmony with environment, culture, and history<br/>
+Spiritual Sensibility – Creating environments that inspire calm, focus, and connection<br/>
+Celebration of Craft – Honoring artistry through detail, materiality, and texture<br/>
+Client-Centric Process – Listening deeply, designing responsively<br/>
+Timeless Aesthetic – Balancing innovation with enduring design principles<br/>
 
 Through this holistic approach, we aim to transform architecture and interiors into meaningful experiences—spaces that resonate deeply and stand the test of time.</p>
                 </div>
@@ -636,79 +654,68 @@ We don’t follow trends—we create designs that age gracefully, grounded in fu
 
 Whether you're building from the ground up or reimagining an existing space, we offer the creativity, insight, and experience to transform your ideas into a space that truly reflects your identity and values.</p>
                 </div>
-                <!-- <div class="image" style="flex: 1;">
-                    <img src="img/aboutimage.jpg" alt="Modern buildings" style="max-width: 100%; height: auto; border-radius: 10px;">
-                </div> -->
             </div>
         </section>
 
         <section class="about section" style="display: flex; justify-content: space-between; align-items: center; padding: 20px; max-width: 1000px; margin: 0 auto; gap: 90px;">
-         
             <div class="insight" style="flex: 1; padding-right: 20px;">
                 <h2 style="margin: 0 0 10px 0; font-size: 24px; color: #333;" class="entry-title">STRATEGY & CONCEPT</h2>
-                <p style="margin: 0; font-size: 16px; color: #666; line-height: 1.5; text-align: justify;" class="entry-text">Purpose-Driven Design, Rooted in Story and Context
+                <p style="margin: 0; font-size: 16px; color: #666; line-height: 1.5; text-align: justify;" class="entry-text">Purpose-Driven Design, Rooted in Story and Context<br/>
 
-Our approach begins with understanding—your vision, your lifestyle, and the unique context of each project. We believe that great design emerges from clarity of concept, cultural awareness, and a deep respect for space.
+Our approach begins with understanding—your vision, your lifestyle, and the unique context of each project. We believe that great design emerges from clarity of concept, cultural awareness, and a deep respect for space.<br/>
 
-From initial conversations to final execution, we follow a collaborative and thoughtful process that blends architecture, interior design, traditional principles, and handcrafted details into a unified whole.
+From initial conversations to final execution, we follow a collaborative and thoughtful process that blends architecture, interior design, traditional principles, and handcrafted details into a unified whole.<br/>
 
-Each project is anchored by a clear design narrative—guided by function, inspired by heritage, and shaped to endure.</p>
+Each project is anchored by a clear design narrative—guided by function, inspired by heritage, and shaped to endure.</p>
             </div>
-               <div class="image" style="flex: 1;">
+            <div class="image" style="flex: 1;">
                 <img src="img/aboutimage.jpg" alt="Modern buildings" style="max-width: 100%; height: auto; border-radius: 10px;">
             </div>
         </section>
-         <section class="about section" style="display: flex;  justify-content: space-between; align-items: start; padding: 20px; max-width: 1000px; margin: 0 auto;margin-top: 10%; gap: 90px;">
+        <section class="about section" style="display: flex; justify-content: space-between; align-items: start; padding: 20px; max-width: 1000px; margin: 0 auto; margin-top: 10%; gap: 90px;">
             <div class="image" style="flex: 1;">
                 <img src="img/Team/2 (2).jpg" alt="Modern buildings" style="max-width: 100%; height: auto; border-radius: 10px;">
             </div>
             <div class="insight" style="flex: 1; padding-right: 20px;">
-                <p style="margin: 0 0 10px 0; font-size: 34px; color: #333;" >Ar. Hridyesh</p>
-                <div style=" font-size: 24px; color: #333;" class="entry-text">CEO & Founder</div>
-                <p style="margin: 0; font-size: 16px; color: #666; line-height: 1.5; text-align: justify;" class="entry-text">Ar. Hridyesh, Principal Architect and Founder of INSIGHT, approaches architecture as a language of art, emotion, and spatial poetry. His design philosophy rests on the belief that architecture must transcend function — it should evoke feeling, narrate identity, and celebrate the dialogue between space, light, and material.
+                <p style="margin: 0 0 10px 0; font-size: 34px; color: #333;">Ar. Hridyesh</p>
+                <div style="font-size: 24px; color: #333;" class="entry-text">CEO & Founder</div>
+                <p style="margin: 0; font-size: 16px; color: #666; line-height: 1.5; text-align: justify;" class="entry-text">Ar. Hridyesh, Principal Architect and Founder of INSIGHT, approaches architecture as a language of art, emotion, and spatial poetry. His design philosophy rests on the belief that architecture must transcend function — it should evoke feeling, narrate identity, and celebrate the dialogue between space, light, and material.<br/>
 
-After completing his Diploma in Architecture in 2003, he further honed his skills through rigorous academic pursuits and professional experience in an architect’s practice, establishing a solid foundation for his design journey. These formative years deepened his understanding of proportion, context, and the human experience within space. To him, design is not a process of addition but of discovery — an act of unveiling the essence that inherently exists within a place or a form.
+After completing his Diploma in Architecture in 2003, he further honed his skills through rigorous academic pursuits and professional experience in an architect’s practice, establishing a solid foundation for his design journey. These formative years deepened his understanding of proportion, context, and the human experience within space. To him, design is not a process of addition but of discovery — an act of unveiling the essence that inherently exists within a place or a form.<br/>
 
-Drawing early inspiration from visionaries such as Le Corbusier, Frank Lloyd Wright, and B. V. Doshi, and later from the timeless heritage of Jaipur, his work embodies a synthesis of modern clarity and cultural depth. Each project under his direction seeks to interpret context with sensitivity while reimagining it through a contemporary lens.
+Drawing early inspiration from visionaries such as Le Corbusier, Frank Lloyd Wright, and B. V. Doshi, and later from the timeless heritage of Jaipur, his work embodies a synthesis of modern clarity and cultural depth. Each project under his direction seeks to interpret context with sensitivity while reimagining it through a contemporary lens.<br/>
 
 For Hridyesh, architecture is an artistic journey — where thought transforms into form and vision finds expression through precision. His work reflects an unwavering pursuit of detail, material honesty, and spatial rhythm, resulting in designs that are both human and timeless.</p>
             </div>
         </section>
 
-       <section class="team-section">
-  <div class="container">
-    <h2 class="section-title">Our Team</h2>
-    <div class="team-grid">
-     
-      <div class="team-member">
-        <img src="img\Team\1 (2).jpg" alt="Team Member 2" class="member-image">
-        <h3 class="member-name">Harshit sharma</h3>
-        <p class="member-role">Senior architect</p>
-        <!-- <p class="member-bio">Jane specializes in cutting-edge technology solutions and system architecture.</p> -->
-      </div>
-      <div class="team-member">
-        <img src="img\Team\4.jpg" alt="Team Member 3" class="member-image">
-        <h3 class="member-name">Shashank sharma</h3>
-        <p class="member-role">Senior architect</p>
-        <!-- <p class="member-bio">Mike creates stunning visuals and user-friendly designs for our products.</p> -->
-      </div>
-      <div class="team-member">
-        <img src="img\Team\5.jpg" alt="Team Member 3" class="member-image">
-        <h3 class="member-name">Ramesh paliwal</h3>
-        <p class="member-role">Interior designer</p>
-        <!-- <p class="member-bio">Mike creates stunning visuals and user-friendly designs for our products.</p> -->
-      </div>
-      <div class="team-member">
-        <img src="img\Team\3.jpg" alt="Team Member 3" class="member-image">
-        <h3 class="member-name">Suresh kumawat</h3>
-        <p class="member-role">Junior architect</p>
-        <!-- <p class="member-bio">Mike creates stunning visuals and user-friendly designs for our products.</p> -->
-      </div>
-    
-      
-    </div>
-  </div>
-</section>
+        <section class="team-section">
+            <div class="container">
+                <h2 class="section-title">Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="img/Team/1 (2).jpg" alt="Team Member 2" class="member-image">
+                        <h3 class="member-name">Harshit Sharma</h3>
+                        <p class="member-role">Senior Architect</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="img/Team/4.jpg" alt="Team Member 3" class="member-image">
+                        <h3 class="member-name">Shashank Sharma</h3>
+                        <p class="member-role">Senior Architect</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="img/Team/5.jpg" alt="Team Member 3" class="member-image">
+                        <h3 class="member-name">Ramesh Paliwal</h3>
+                        <p class="member-role">Interior Designer</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="img/Team/3.jpg" alt="Team Member 3" class="member-image">
+                        <h3 class="member-name">Suresh Kumawat</h3>
+                        <p class="member-role">Junior Architect</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <div class="services-section">
             <div class="section-header">
@@ -787,7 +794,6 @@ For Hridyesh, architecture is an artistic journey — where thought transforms i
                         </div>
                     </div>
                 </div>
-              
                 <!-- Master Planning Card -->
                 <div class="service-card">
                     <div class="card-inner">
@@ -805,14 +811,11 @@ For Hridyesh, architecture is an artistic journey — where thought transforms i
                         </div>
                     </div>
                 </div>
-              
-               
-           
                 <!-- Recreational Projects Card -->
                 <div class="service-card">
                     <div class="card-inner">
                         <div class="card-front">
-                            <h3>RECREATIONAL </h3>
+                            <h3>RECREATIONAL</h3>
                         </div>
                         <div class="card-back">
                             <svg class="card-back-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
@@ -821,7 +824,7 @@ For Hridyesh, architecture is an artistic journey — where thought transforms i
                                 <circle cx="26" cy="24" r="2" />
                                 <circle cx="38" cy="24" r="2" />
                             </svg>
-                            <h3>RECREATIONAL </h3>
+                            <h3>RECREATIONAL</h3>
                             <p>Vibrant recreational facilities designed for leisure, sports, and community activities.</p>
                         </div>
                     </div>
@@ -881,5 +884,175 @@ For Hridyesh, architecture is an artistic journey — where thought transforms i
 <script src="js/jquery.magnific-popup.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/interface.js"></script> 
+<script>
+  // Enhanced Bubble Background Effect
+  const canvas = document.getElementById('bubbleCanvas');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let mouseX = -1000;
+  let mouseY = -1000;
+  let mouseRadius = 120;
+
+  const bubbles = [];
+
+  // Bubble class with enhanced effects
+  class Bubble {
+    constructor(x, y, radius) {
+      this.x = x;
+      this.y = y;
+      this.radius = radius;
+      this.originalX = x;
+      this.originalY = y;
+      this.vx = 0;
+      this.vy = 0;
+      this.opacity = 0.2 + Math.random() * 0.2;
+      this.hue = 200 + Math.random() * 40;
+      this.floatSpeed = 0.3 + Math.random() * 0.4;
+      this.floatOffset = Math.random() * Math.PI * 2;
+      this.shimmer = Math.random() * Math.PI * 2;
+    }
+
+    update() {
+      // Gentle floating animation
+      this.y = this.originalY + Math.sin(Date.now() * 0.0008 * this.floatSpeed + this.floatOffset) * 12;
+      this.shimmer += 0.02;
+      
+      // Check distance from cursor
+      const dx = this.x - mouseX;
+      const dy = this.y - mouseY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < mouseRadius) {
+        // Repulsion from cursor
+        const angle = Math.atan2(dy, dx);
+        const force = (mouseRadius - distance) / mouseRadius;
+        
+        this.vx = Math.cos(angle) * force * 2.5;
+        this.vy = Math.sin(angle) * force * 2.5;
+        
+        this.opacity = Math.min(0.6, 0.25 + force * 0.35);
+      } else {
+        // Return to original position
+        const returnDx = this.originalX - this.x;
+        
+        this.vx += returnDx * 0.03;
+        this.vx *= 0.88;
+        
+        this.opacity = Math.max(0.15, this.opacity - 0.015);
+      }
+
+      // Apply velocity
+      this.x += this.vx;
+    }
+
+    draw() {
+      const shimmerEffect = Math.sin(this.shimmer) * 0.15 + 0.85;
+      
+      // Main bubble gradient
+      const gradient = ctx.createRadialGradient(
+        this.x - this.radius * 0.35,
+        this.y - this.radius * 0.35,
+        0,
+        this.x,
+        this.y,
+        this.radius
+      );
+      
+      gradient.addColorStop(0, `hsla(${this.hue}, 65%, 88%, ${this.opacity * shimmerEffect})`);
+      gradient.addColorStop(0.5, `hsla(${this.hue}, 55%, 78%, ${this.opacity * 0.6})`);
+      gradient.addColorStop(1, `hsla(${this.hue}, 45%, 68%, ${this.opacity * 0.15})`);
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Subtle border
+      ctx.strokeStyle = `hsla(${this.hue}, 50%, 70%, ${this.opacity * 0.4})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+
+      // Inner highlight
+      const highlightGradient = ctx.createRadialGradient(
+        this.x - this.radius * 0.4,
+        this.y - this.radius * 0.4,
+        0,
+        this.x - this.radius * 0.2,
+        this.y - this.radius * 0.2,
+        this.radius * 0.6
+      );
+      
+      highlightGradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity * 0.5 * shimmerEffect})`);
+      highlightGradient.addColorStop(0.5, `rgba(255, 255, 255, ${this.opacity * 0.2})`);
+      highlightGradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+
+      ctx.fillStyle = highlightGradient;
+      ctx.beginPath();
+      ctx.arc(this.x - this.radius * 0.3, this.y - this.radius * 0.3, this.radius * 0.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  // Create bubbles with better distribution
+  function createBubbles() {
+    const cols = Math.floor(canvas.width / 100);
+    const rows = Math.floor(canvas.height / 100);
+    
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const x = col * 100 + 50 + (Math.random() - 0.5) * 40;
+        const y = row * 100 + 50 + (Math.random() - 0.5) * 40;
+        const radius = 6 + Math.random() * 5;
+        
+        bubbles.push(new Bubble(x, y, radius));
+      }
+    }
+  }
+
+  // Mouse move event
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // Mouse leave event
+  document.addEventListener('mouseleave', () => {
+    mouseX = -1000;
+    mouseY = -1000;
+  });
+
+  // Window resize event
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    bubbles.length = 0;
+    createBubbles();
+  });
+
+  // Animation loop for bubbles
+  function animateBubbles() {
+    // Clear canvas with soft gradient background
+    const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    bgGradient.addColorStop(0, '#f8f9fa');
+    bgGradient.addColorStop(1, '#e9ecef');
+    ctx.fillStyle = bgGradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Update and draw bubbles
+    bubbles.forEach((bubble) => {
+      bubble.update();
+      bubble.draw();
+    });
+
+    requestAnimationFrame(animateBubbles);
+  }
+
+  // Initialize bubbles
+  createBubbles();
+  animateBubbles();
+</script>
 </body>
 </html>
