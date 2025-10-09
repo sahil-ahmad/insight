@@ -1484,7 +1484,7 @@ label.error{
   height: 9em;
   margin:-4.5em;
   border-radius: 50%;
-  background-color: rgba(197,164,126,0.84);
+  background-color: rgba(90, 88, 87, 0.84);
   overflow: hidden;
   opacity: 0;
   -webkit-transform: scale(0.5);
