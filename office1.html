@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insight - About Us</title>
+<title>Insight - Project</title>
 
 <!-- Favicons -->
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet" media="screen">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
   .project-title-section {
@@ -250,41 +250,25 @@
     z-index: 1001;
   }
 
-  /* Bubble Cursor Styles */
-  .cursor-bubble {
+  /* Bubble Background Styles */
+  #bubbleCanvas {
     position: fixed;
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle, rgba(184, 160, 126, 0.8), rgba(184, 160, 126, 0.3));
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
     pointer-events: none;
-    z-index: 999;
-    box-shadow: 0 0 20px rgba(184, 160, 126, 0.6);
-    transform: translate(-50%, -50%);
   }
 
-  .bubble {
-    position: fixed;
-    pointer-events: none;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(184, 160, 126, 0.8), rgba(184, 160, 126, 0.1));
-    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.2), 0 0 20px rgba(184, 160, 126, 0.4);
-    z-index: 5;
+  .layout {
+    position: relative;
+    z-index: 2;
   }
 
-  @keyframes bubbleFloat {
-    0% {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-100px) scale(0.3);
-      opacity: 0;
-    }
-  }
-
-  .bubble.animate {
-    animation: bubbleFloat 1.5s ease-out forwards;
+  .header-inner {
+    position: relative;
+    z-index: 3;
   }
 
   @media (max-width: 768px) {
@@ -343,6 +327,9 @@
 
 <body>
   
+  <!-- Bubble Canvas Background -->
+  <canvas id="bubbleCanvas"></canvas>
+
   <!-- Loader -->
   <div class="loader">
     <div class="page-lines">
@@ -380,24 +367,23 @@
       <div class="vertical-panel-info">
         <div class="line"></div>
       </div>
-    <ul class="social-list">
-            <li><a href="https://wa.me/9828312666/?text=urlencodedtext"><i class="fa-brands fa-whatsapp"></i></a></li>
-            <li><a href="https://www.instagram.com/insight_studio_jaipur?igsh=MXhhaDR4OHZjZ2t2Zw=="><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-            
-        </ul>    
+      <ul class="social-list">
+        <li><a href="https://wa.me/9828312666/?text=urlencodedtext"><i class="fa-brands fa-whatsapp"></i></a></li>
+        <li><a href="https://www.instagram.com/insight_studio_jaipur?igsh=MXhhaDR4OHZjZ2t2Zw=="><i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+      </ul>    
     </div>
 
     <!-- Navigation Desktop -->
     <nav class="navbar-desctop visible-md visible-lg">
       <ul class="navbar-desctop-menu">
-          <li><a href="index.html">Home</a></li>
-          <li ><a href="about.html">About us</a></li>
-          <li class="active"><a href="project.html">Project</a></li>
-          <li><a href="publication.html">Publication</a></li>
-          <li><a href="contacts.html">Contacts</a></li>
-        </ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li class="active"><a href="project.html">Project</a></li>
+        <li><a href="publication.html">Publication</a></li>
+        <li><a href="contacts.html">Contacts</a></li>
+      </ul>
     </nav>
 
     <!-- Navigation Mobile -->
@@ -405,22 +391,20 @@
       <a href="#top" class="brand js-target-scroll">
         <img src="img/Insight.png" style="width: 95px" />
       </a>
-
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-mobile">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbar-mobile"> 
         <ul class="navbar-nav-mobile">
-                  <li ><a href="index.html">Home</a></li>
-                <li ><a href="about.html">About us</a></li>
-                <li class="active"><a href="project.html">Project</a></li>
-                <li><a href="publication.html">Publication</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li class="active"><a href="project.html">Project</a></li>
+          <li><a href="publication.html">Publication</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
+        </ul>
       </div>
     </nav> 
   </header>
@@ -429,7 +413,7 @@
   <div class="layout">
     
     <!-- Main Hero Section -->
-    <main class="main main-inner main-project"  data-stellar-background-ratio="0.6">
+    <main class="main main-inner main-project" data-stellar-background-ratio="0.6">
       <div class="container">
         <header class="main-header"><h1>Portfolio</h1></header>
       </div>
@@ -446,15 +430,14 @@
     </main>
 
     <div class="content">   
-    
       <!-- Project Title Section -->
       <section class="project-title-section">
-        <div class="project-subtitle">office</div>
+        <div class="project-subtitle">Office</div>
       </section>
 
       <!-- Project Description -->
       <section class="project-description">
-        <p>This home features a clean and simple linear design that balances modern style with muted elegance. The exterior elevates abd with neutral palette framed by lush greenery, offering a refined visual and privacy from neighbouring buildings - Inside, the space opens is bathed in soft morning sunlight, creating a beautiful and spiritual atmosphere. The house has three unique master bedrooms, each with en-suites, separate dressing areas, and bay seating. The design emphasises functionality, with spacious, open interiors that delight open, and spacious. Large windows and openings connect the indoor spaces seamlessly with the outdoors, bringing in natural light and greenery. The home also includes a planted terrace that doubles as an ornamental terrace to create a blend of indoor and outdoor spaces. Subtle natural elements. The home truly manifests modern living with its thoughtful design and harmonious integration of nature.</p>
+        <p>The Jai Chopra Office project exemplifies modern workspace design, blending functionality with sophisticated aesthetics. The exterior features a sleek, minimalist facade with a neutral palette, enhanced by strategic landscaping that creates a professional yet inviting atmosphere. Inside, the office is designed for productivity and collaboration, with open-plan layouts that maximize natural light through expansive windows. The space includes flexible work areas, private offices, and communal zones, all crafted to foster creativity and efficiency. Thoughtful integration of greenery and outdoor terraces enhances the connection between indoor and outdoor environments, promoting a balanced and inspiring workplace. This project reflects contemporary office architecture with its seamless blend of style, practicality, and natural elements.</p>
       </section>
 
       <!-- Gallery Title -->
@@ -465,20 +448,18 @@
       <!-- Project Gallery -->
       <section class="project-gallery">
         <div class="gallery-item" data-index="0">
-          <img src="img/office/JAI CHOPRA OFFICE/raj ji office 11.jpg" alt="Interior Design 1">
+          <img src="img/office/JAI CHOPRA OFFICE/raj ji office 11.jpg" alt="Jai Chopra Office Interior">
           <div class="gallery-item-overlay">
             <i class="fa-solid fa-search-plus zoom-icon"></i>
           </div>
         </div>
-        
-
       </section>
 
       <!-- Image Modal -->
       <div id="imageModal" class="image-modal">
-        <span class="close">&times;</span>
-        <span class="modal-nav modal-prev">&#10094;</span>
-        <span class="modal-nav modal-next">&#10095;</span>
+        <span class="close" aria-label="Close modal">&times;</span>
+        <span class="modal-nav modal-prev" aria-label="Previous image">&#10094;</span>
+        <span class="modal-nav modal-next" aria-label="Next image">&#10095;</span>
         <img class="modal-content" id="modalImage" alt="Project Image">
         <div class="image-counter">
           <span id="currentImage">1</span> / <span id="totalImages">1</span>
@@ -531,61 +512,174 @@
 <script src="js/interface.js"></script> 
 
 <script>
-  // Bubble Cursor Effect
-  const bubbleContainer = document.body;
-  const cursorBubble = document.createElement('div');
-  cursorBubble.className = 'cursor-bubble';
-  document.body.appendChild(cursorBubble);
+  // Enhanced Bubble Background Effect
+  const canvas = document.getElementById('bubbleCanvas');
+  const ctx = canvas.getContext('2d');
 
-  let mouseX = 0;
-  let mouseY = 0;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
-  // Track mouse movement
+  let mouseX = -1000;
+  let mouseY = -1000;
+  let mouseRadius = 120;
+
+  const bubbles = [];
+
+  // Bubble class with enhanced effects
+  class Bubble {
+    constructor(x, y, radius) {
+      this.x = x;
+      this.y = y;
+      this.radius = radius;
+      this.originalX = x;
+      this.originalY = y;
+      this.vx = 0;
+      this.vy = 0;
+      this.opacity = 0.2 + Math.random() * 0.2;
+      this.hue = 200 + Math.random() * 40;
+      this.floatSpeed = 0.3 + Math.random() * 0.4;
+      this.floatOffset = Math.random() * Math.PI * 2;
+      this.shimmer = Math.random() * Math.PI * 2;
+    }
+
+    update() {
+      // Gentle floating animation
+      this.y = this.originalY + Math.sin(Date.now() * 0.0008 * this.floatSpeed + this.floatOffset) * 12;
+      this.shimmer += 0.02;
+      
+      // Check distance from cursor
+      const dx = this.x - mouseX;
+      const dy = this.y - mouseY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < mouseRadius) {
+        // Repulsion from cursor
+        const angle = Math.atan2(dy, dx);
+        const force = (mouseRadius - distance) / mouseRadius;
+        
+        this.vx = Math.cos(angle) * force * 2.5;
+        this.vy = Math.sin(angle) * force * 2.5;
+        
+        this.opacity = Math.min(0.6, 0.25 + force * 0.35);
+      } else {
+        // Return to original position
+        const returnDx = this.originalX - this.x;
+        
+        this.vx += returnDx * 0.03;
+        this.vx *= 0.88;
+        
+        this.opacity = Math.max(0.15, this.opacity - 0.015);
+      }
+
+      // Apply velocity
+      this.x += this.vx;
+    }
+
+    draw() {
+      const shimmerEffect = Math.sin(this.shimmer) * 0.15 + 0.85;
+      
+      // Main bubble gradient
+      const gradient = ctx.createRadialGradient(
+        this.x - this.radius * 0.35,
+        this.y - this.radius * 0.35,
+        0,
+        this.x,
+        this.y,
+        this.radius
+      );
+      
+      gradient.addColorStop(0, `hsla(${this.hue}, 65%, 88%, ${this.opacity * shimmerEffect})`);
+      gradient.addColorStop(0.5, `hsla(${this.hue}, 55%, 78%, ${this.opacity * 0.6})`);
+      gradient.addColorStop(1, `hsla(${this.hue}, 45%, 68%, ${this.opacity * 0.15})`);
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Subtle border
+      ctx.strokeStyle = `hsla(${this.hue}, 50%, 70%, ${this.opacity * 0.4})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+
+      // Inner highlight
+      const highlightGradient = ctx.createRadialGradient(
+        this.x - this.radius * 0.4,
+        this.y - this.radius * 0.4,
+        0,
+        this.x - this.radius * 0.2,
+        this.y - this.radius * 0.2,
+        this.radius * 0.6
+      );
+      
+      highlightGradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity * 0.5 * shimmerEffect})`);
+      gradient.addColorStop(0.5, `rgba(255, 255, 255, ${this.opacity * 0.2})`);
+      gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+
+      ctx.fillStyle = highlightGradient;
+      ctx.beginPath();
+      ctx.arc(this.x - this.radius * 0.3, this.y - this.radius * 0.3, this.radius * 0.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  // Create bubbles with better distribution
+  function createBubbles() {
+    const cols = Math.floor(canvas.width / 100);
+    const rows = Math.floor(canvas.height / 100);
+    
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const x = col * 100 + 50 + (Math.random() - 0.5) * 40;
+        const y = row * 100 + 50 + (Math.random() - 0.5) * 40;
+        const radius = 6 + Math.random() * 5;
+        
+        bubbles.push(new Bubble(x, y, radius));
+      }
+    }
+  }
+
+  // Mouse move event
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-
-    // Update cursor position
-    cursorBubble.style.left = mouseX + 'px';
-    cursorBubble.style.top = mouseY + 'px';
-
-    // Create bubble occasionally
-    if (Math.random() > 0.85) {
-      createBubble(mouseX, mouseY);
-    }
   });
 
-  function createBubble(x, y) {
-    const bubble = document.createElement('div');
-    bubble.className = 'bubble';
+  // Mouse leave event
+  document.addEventListener('mouseleave', () => {
+    mouseX = -1000;
+    mouseY = -1000;
+  });
 
-    // Random bubble size between 10px and 40px
-    const size = Math.random() * 30 + 10;
-    bubble.style.width = size + 'px';
-    bubble.style.height = size + 'px';
+  // Window resize event
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    bubbles.length = 0;
+    createBubbles();
+  });
 
-    // Offset bubble slightly from cursor
-    const offsetX = (Math.random() - 0.5) * 40;
-    const offsetY = (Math.random() - 0.5) * 40;
+  // Animation loop for bubbles
+  function animateBubbles() {
+    // Clear canvas with soft gradient background
+    const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    bgGradient.addColorStop(0, '#f8f9fa');
+    bgGradient.addColorStop(1, '#e9ecef');
+    ctx.fillStyle = bgGradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    bubble.style.left = (x + offsetX) + 'px';
-    bubble.style.top = (y + offsetY) + 'px';
+    // Update and draw bubbles
+    bubbles.forEach((bubble) => {
+      bubble.update();
+      bubble.draw();
+    });
 
-    bubbleContainer.appendChild(bubble);
-
-    // Add animation class
-    setTimeout(() => {
-      bubble.classList.add('animate');
-    }, 10);
-
-    // Remove bubble after animation
-    setTimeout(() => {
-      bubble.remove();
-    }, 1500);
+    requestAnimationFrame(animateBubbles);
   }
 
-  // Hide default cursor
-  document.body.style.cursor = 'none';
+  // Initialize bubbles
+  createBubbles();
+  animateBubbles();
 
   // Gallery modal functionality
   var modal = document.getElementById("imageModal");

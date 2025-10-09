@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insight - About Us</title>
+<title>Insight - Project</title>
 
 <!-- Favicons -->
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -115,6 +115,7 @@
     border-radius: 8px;
     aspect-ratio: 4/3;
     position: relative;
+    cursor: pointer;
   }
 
   .gallery-item img {
@@ -126,6 +127,148 @@
 
   .gallery-item:hover img {
     transform: scale(1.05);
+  }
+
+  /* Zoom Overlay */
+  .gallery-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+  }
+
+  .zoom-icon {
+    color: #fff;
+    font-size: 40px;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover .zoom-icon {
+    transform: scale(1);
+  }
+
+  /* Modal Styles */
+  .image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border: none;
+    display: block;
+    margin: auto;
+    animation: zoomIn 0.3s ease;
+  }
+
+  @keyframes zoomIn {
+    from { transform: scale(0.8); }
+    to { transform: scale(1); }
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+  }
+
+  .close:hover {
+    color: #ccc;
+    transform: rotate(90deg);
+  }
+
+  /* Navigation Arrows */
+  .modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    padding: 20px;
+    user-select: none;
+    transition: all 0.3s ease;
+    z-index: 1001;
+  }
+
+  .modal-nav:hover {
+    color: #b8a07e;
+    transform: translateY(-50%) scale(1.2);
+  }
+
+  .modal-prev {
+    left: 20px;
+  }
+
+  .modal-next {
+    right: 20px;
+  }
+
+  /* Image Counter */
+  .image-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 16px;
+    z-index: 1001;
+  }
+
+  /* Bubble Background Styles */
+  #bubbleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .layout {
+    position: relative;
+    z-index: 2;
+  }
+
+  .header-inner {
+    position: relative;
+    z-index: 3;
   }
 
   @media (max-width: 768px) {
@@ -150,12 +293,43 @@
     .project-gallery {
       grid-template-columns: 1fr;
     }
+
+    .close {
+      font-size: 30px;
+      right: 20px;
+      top: 15px;
+    }
+
+    .modal-content {
+      max-width: 95%;
+      max-height: 85%;
+    }
+
+    .modal-nav {
+      font-size: 30px;
+      padding: 10px;
+    }
+
+    .modal-prev {
+      left: 10px;
+    }
+
+    .modal-next {
+      right: 10px;
+    }
+
+    .zoom-icon {
+      font-size: 30px;
+    }
   }
 </style>
 </head>
 
 <body>
   
+  <!-- Bubble Canvas Background -->
+  <canvas id="bubbleCanvas"></canvas>
+
   <!-- Loader -->
   <div class="loader">
     <div class="page-lines">
@@ -193,24 +367,23 @@
       <div class="vertical-panel-info">
         <div class="line"></div>
       </div>
-    <ul class="social-list">
-            <li><a href="https://wa.me/9828312666/?text=urlencodedtext"><i class="fa-brands fa-whatsapp"></i></a></li>
-            <li><a href="https://www.instagram.com/insight_studio_jaipur?igsh=MXhhaDR4OHZjZ2t2Zw=="><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-            
-        </ul>    
+      <ul class="social-list">
+        <li><a href="https://wa.me/9828312666/?text=urlencodedtext"><i class="fa-brands fa-whatsapp"></i></a></li>
+        <li><a href="https://www.instagram.com/insight_studio_jaipur?igsh=MXhhaDR4OHZjZ2t2Zw=="><i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+      </ul>    
     </div>
 
     <!-- Navigation Desktop -->
     <nav class="navbar-desctop visible-md visible-lg">
       <ul class="navbar-desctop-menu">
-          <li><a href="index.html">Home</a></li>
-          <li ><a href="about.html">About us</a></li>
-          <li class="active"><a href="project.html">Project</a></li>
-          <li><a href="publication.html">Publication</a></li>
-          <li><a href="contacts.html">Contacts</a></li>
-        </ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li class="active"><a href="project.html">Project</a></li>
+        <li><a href="publication.html">Publication</a></li>
+        <li><a href="contacts.html">Contacts</a></li>
+      </ul>
     </nav>
 
     <!-- Navigation Mobile -->
@@ -218,22 +391,20 @@
       <a href="#top" class="brand js-target-scroll">
         <img src="img/Insight.png" style="width: 95px" />
       </a>
-
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-mobile">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbar-mobile"> 
         <ul class="navbar-nav-mobile">
-                  <li ><a href="index.html">Home</a></li>
-                <li ><a href="about.html">About us</a></li>
-                <li class="active"><a href="project.html">Project</a></li>
-                <li><a href="publication.html">Publication</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li class="active"><a href="project.html">Project</a></li>
+          <li><a href="publication.html">Publication</a></li>
+          <li><a href="contacts.html">Contacts</a></li>
+        </ul>
       </div>
     </nav> 
   </header>
@@ -242,9 +413,9 @@
   <div class="layout">
     
     <!-- Main Hero Section -->
-    <main class="main main-inner main-project"  data-stellar-background-ratio="0.6">
+    <main class="main main-inner main-project" data-stellar-background-ratio="0.6">
       <div class="container">
-        <header class="main-header"><h1>Porftolio</h1></header>
+        <header class="main-header"><h1>Portfolio</h1></header>
       </div>
       <div class="page-lines">
         <div class="container">
@@ -259,29 +430,14 @@
     </main>
 
     <div class="content">   
-    
       <!-- Project Title Section -->
       <section class="project-title-section">
-        <div class="project-subtitle">commercial</div>
-        <!-- <h1 class="project-main-title">Casa</h1>
-        <h2 class="project-secondary-title">Arco</h2> -->
-        
-        <!-- <div class="project-stats">
-          <div class="stat-item">
-            <div class="stat-label">PUBLIC AREA</div>
-            <div class="stat-value">0</div>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <div class="stat-label">BEDROOMS</div>
-            <div class="stat-value">3</div>
-          </div>
-        </div> -->
+        <div class="project-subtitle">Commercial</div>
       </section>
 
       <!-- Project Description -->
       <section class="project-description">
-        <p>This home features a clean and simple linear design that balances modern style with muted elegance. The exterior elevates abd with neutral palette framed by lush greenery, offering a refined visual and privacy from neighbouring buildings - Inside, the space opens is bathed in soft morning sunlight, creating a beautiful and spiritual atmosphere. The house has three unique master bedrooms, each with en-suites, separate dressing areas, and bay seating. The design emphasises functionality, with spacious, open interiors that delight open, and spacious. Large windows and openings connect the indoor spaces seamlessly with the outdoors, bringing in natural light and greenery. The home also includes a planted terrace that doubles as an ornamental terrace to create a blend of indoor and outdoor spaces. Subtle natural elements. The home truly manifests modern living with its thoughtful design and harmonious integration of nature.</p>
+        <p>This commercial space features a clean and simple linear design that balances modern style with muted elegance. The exterior is elevated with a neutral palette framed by lush greenery, offering a refined visual and privacy from neighboring buildings. Inside, the space is bathed in soft morning sunlight, creating a welcoming and professional atmosphere. The design emphasizes functionality with spacious, open interiors that promote productivity and comfort. Large windows and openings seamlessly connect indoor spaces with the outdoors, bringing in natural light and greenery. The space also includes a thoughtfully designed outdoor area that enhances the aesthetic appeal and creates a blend of indoor and outdoor environments. Subtle natural elements make this commercial space a true manifestation of modern design with thoughtful integration of nature.</p>
       </section>
 
       <!-- Gallery Title -->
@@ -291,31 +447,48 @@
 
       <!-- Project Gallery -->
       <section class="project-gallery">
-        <div class="gallery-item">
-          <img src="img\commercial\CAFE AT PRATAP NAGAR commer\10.06 (1).jpg" alt="Interior Design 1">
+        <div class="gallery-item" data-index="0">
+          <img src="img/commercial/CAFE AT PRATAP NAGAR commer/10.06 (1).jpg" alt="Café Interior Seating Area">
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-search-plus zoom-icon"></i>
+          </div>
         </div>
-         <div class="gallery-item">
-          <img src="img\commercial\CAFE AT PRATAP NAGAR commer\10.06 (2).jpg" alt="Interior Design 1">
+        <div class="gallery-item" data-index="1">
+          <img src="img/commercial/CAFE AT PRATAP NAGAR commer/10.06 (2).jpg" alt="Café Counter Design">
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-search-plus zoom-icon"></i>
+          </div>
         </div>
-    
-         <div class="gallery-item">
-          <img src="img\commercial\CAFE AT PRATAP NAGAR commer\10.06 (3).jpg" alt="Interior Design 1">
+        <div class="gallery-item" data-index="2">
+          <img src="img/commercial/CAFE AT PRATAP NAGAR commer/10.06 (3).jpg" alt="Café Outdoor Seating">
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-search-plus zoom-icon"></i>
+          </div>
         </div>
-    
-         <div class="gallery-item">
-          <img src="img\commercial\CAFE AT PRATAP NAGAR commer\10.06 (4).jpg" alt="Interior Design 1">
+        <div class="gallery-item" data-index="3">
+          <img src="img/commercial/CAFE AT PRATAP NAGAR commer/10.06 (4).jpg" alt="Café Interior Decor">
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-search-plus zoom-icon"></i>
+          </div>
         </div>
-    
-         <div class="gallery-item">
-          <img src="img\commercial\CAFE AT PRATAP NAGAR commer\10.06 (5).jpg" alt="Interior Design 1">
+        <div class="gallery-item" data-index="4">
+          <img src="img/commercial/CAFE AT PRATAP NAGAR commer/10.06 (5).jpg" alt="Café Lighting Design">
+          <div class="gallery-item-overlay">
+            <i class="fa-solid fa-search-plus zoom-icon"></i>
+          </div>
         </div>
-    
-    
-      
-
-
-
       </section>
+
+      <!-- Image Modal -->
+      <div id="imageModal" class="image-modal">
+        <span class="close" aria-label="Close modal">&times;</span>
+        <span class="modal-nav modal-prev" aria-label="Previous image">&#10094;</span>
+        <span class="modal-nav modal-next" aria-label="Next image">&#10095;</span>
+        <img class="modal-content" id="modalImage" alt="Project Image">
+        <div class="image-counter">
+          <span id="currentImage">1</span> / <span id="totalImages">5</span>
+        </div>
+      </div>
 
       <!-- Footer -->
       <footer id="footer" class="footer" style="margin-top: 80px;">     
@@ -361,6 +534,253 @@
 <script src="js/jquery.magnific-popup.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/interface.js"></script> 
+
+<script>
+  // Enhanced Bubble Background Effect
+  const canvas = document.getElementById('bubbleCanvas');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let mouseX = -1000;
+  let mouseY = -1000;
+  let mouseRadius = 120;
+
+  const bubbles = [];
+
+  // Bubble class with enhanced effects
+  class Bubble {
+    constructor(x, y, radius) {
+      this.x = x;
+      this.y = y;
+      this.radius = radius;
+      this.originalX = x;
+      this.originalY = y;
+      this.vx = 0;
+      this.vy = 0;
+      this.opacity = 0.2 + Math.random() * 0.2;
+      this.hue = 200 + Math.random() * 40;
+      this.floatSpeed = 0.3 + Math.random() * 0.4;
+      this.floatOffset = Math.random() * Math.PI * 2;
+      this.shimmer = Math.random() * Math.PI * 2;
+    }
+
+    update() {
+      // Gentle floating animation
+      this.y = this.originalY + Math.sin(Date.now() * 0.0008 * this.floatSpeed + this.floatOffset) * 12;
+      this.shimmer += 0.02;
+      
+      // Check distance from cursor
+      const dx = this.x - mouseX;
+      const dy = this.y - mouseY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < mouseRadius) {
+        // Repulsion from cursor
+        const angle = Math.atan2(dy, dx);
+        const force = (mouseRadius - distance) / mouseRadius;
+        
+        this.vx = Math.cos(angle) * force * 2.5;
+        this.vy = Math.sin(angle) * force * 2.5;
+        
+        this.opacity = Math.min(0.6, 0.25 + force * 0.35);
+      } else {
+        // Return to original position
+        const returnDx = this.originalX - this.x;
+        
+        this.vx += returnDx * 0.03;
+        this.vx *= 0.88;
+        
+        this.opacity = Math.max(0.15, this.opacity - 0.015);
+      }
+
+      // Apply velocity
+      this.x += this.vx;
+    }
+
+    draw() {
+      const shimmerEffect = Math.sin(this.shimmer) * 0.15 + 0.85;
+      
+      // Main bubble gradient
+      const gradient = ctx.createRadialGradient(
+        this.x - this.radius * 0.35,
+        this.y - this.radius * 0.35,
+        0,
+        this.x,
+        this.y,
+        this.radius
+      );
+      
+      gradient.addColorStop(0, `hsla(${this.hue}, 65%, 88%, ${this.opacity * shimmerEffect})`);
+      gradient.addColorStop(0.5, `hsla(${this.hue}, 55%, 78%, ${this.opacity * 0.6})`);
+      gradient.addColorStop(1, `hsla(${this.hue}, 45%, 68%, ${this.opacity * 0.15})`);
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Subtle border
+      ctx.strokeStyle = `hsla(${this.hue}, 50%, 70%, ${this.opacity * 0.4})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+
+      // Inner highlight
+      const highlightGradient = ctx.createRadialGradient(
+        this.x - this.radius * 0.4,
+        this.y - this.radius * 0.4,
+        0,
+        this.x - this.radius * 0.2,
+        this.y - this.radius * 0.2,
+        this.radius * 0.6
+      );
+      
+      highlightGradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity * 0.5 * shimmerEffect})`);
+      highlightGradient.addColorStop(0.5, `rgba(255, 255, 255, ${this.opacity * 0.2})`);
+      highlightGradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+
+      ctx.fillStyle = highlightGradient;
+      ctx.beginPath();
+      ctx.arc(this.x - this.radius * 0.3, this.y - this.radius * 0.3, this.radius * 0.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  // Create bubbles with better distribution
+  function createBubbles() {
+    const cols = Math.floor(canvas.width / 100);
+    const rows = Math.floor(canvas.height / 100);
+    
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const x = col * 100 + 50 + (Math.random() - 0.5) * 40;
+        const y = row * 100 + 50 + (Math.random() - 0.5) * 40;
+        const radius = 6 + Math.random() * 5;
+        
+        bubbles.push(new Bubble(x, y, radius));
+      }
+    }
+  }
+
+  // Mouse move event
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // Mouse leave event
+  document.addEventListener('mouseleave', () => {
+    mouseX = -1000;
+    mouseY = -1000;
+  });
+
+  // Window resize event
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    bubbles.length = 0;
+    createBubbles();
+  });
+
+  // Animation loop for bubbles
+  function animateBubbles() {
+    // Clear canvas with soft gradient background
+    const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    bgGradient.addColorStop(0, '#f8f9fa');
+    bgGradient.addColorStop(1, '#e9ecef');
+    ctx.fillStyle = bgGradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Update and draw bubbles
+    bubbles.forEach((bubble) => {
+      bubble.update();
+      bubble.draw();
+    });
+
+    requestAnimationFrame(animateBubbles);
+  }
+
+  // Initialize bubbles
+  createBubbles();
+  animateBubbles();
+
+  // Gallery modal functionality
+  var modal = document.getElementById("imageModal");
+  var modalImg = document.getElementById("modalImage");
+  var galleryItems = document.getElementsByClassName("gallery-item");
+  var currentImageSpan = document.getElementById("currentImage");
+  var totalImagesSpan = document.getElementById("totalImages");
+  var currentIndex = 0;
+  var images = [];
+
+  // Collect all images
+  for (var i = 0; i < galleryItems.length; i++) {
+    var img = galleryItems[i].querySelector('img');
+    images.push({
+      src: img.src,
+      alt: img.alt
+    });
+  }
+
+  // Set total images count
+  totalImagesSpan.textContent = images.length;
+
+  // Add click event to each gallery item
+  for (var i = 0; i < galleryItems.length; i++) {
+    galleryItems[i].onclick = function() {
+      currentIndex = parseInt(this.getAttribute('data-index'));
+      openModal(currentIndex);
+    }
+  }
+
+  function openModal(index) {
+    modal.style.display = "flex";
+    modalImg.src = images[index].src;
+    modalImg.alt = images[index].alt;
+    currentImageSpan.textContent = index + 1;
+  }
+
+  // Close button
+  var closeBtn = document.getElementsByClassName("close")[0];
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // Previous button
+  var prevBtn = document.getElementsByClassName("modal-prev")[0];
+  prevBtn.onclick = function() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    openModal(currentIndex);
+  }
+
+  // Next button
+  var nextBtn = document.getElementsByClassName("modal-next")[0];
+  nextBtn.onclick = function() {
+    currentIndex = (currentIndex + 1) % images.length;
+    openModal(currentIndex);
+  }
+
+  // Close modal when clicking outside the image
+  modal.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(event) {
+    if (modal.style.display === 'flex') {
+      if (event.key === 'Escape') {
+        modal.style.display = "none";
+      } else if (event.key === 'ArrowLeft') {
+        prevBtn.click();
+      } else if (event.key === 'ArrowRight') {
+        nextBtn.click();
+      }
+    }
+  });
+</script>
 </body>
 
 </html>
