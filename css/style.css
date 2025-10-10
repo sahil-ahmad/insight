@@ -477,8 +477,8 @@ label.error{
 
 .section{
   position: relative;
-  margin-top: 7.1em;
-  margin-bottom: 7.1em;
+  /* margin-top: 7.1em; */
+  /* margin-bottom: 7.1em; */
 }
 
 .section-header{
