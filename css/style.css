@@ -611,11 +611,9 @@ label.error{
   text-align: center;
   transition: all 0.3s;
   /* Background blur effect */
-  background: rgba(255, 255, 255, 0.2); /* Light transparent background */
-  backdrop-filter: blur(10px); /* Blur intensity */
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
-  border-radius: 0 0 20px 0 ; /* Optional: smooth corners */
-  /* border: 1px solid rgba(255, 255, 255, 0.3); Optional: glassy border */
+  background: #F6F5F3; /* Light transparent background */
+ 
+  border-radius: 0 0 20px 0 ; 
 }
 
 .brand{
